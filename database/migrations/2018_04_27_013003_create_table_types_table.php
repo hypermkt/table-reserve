@@ -21,7 +21,7 @@ class CreateTableTypesTable extends Migration
             $table->time('end_time'); // 利用終了時間
             $table->integer('minimum_capacity'); // 最低定員数
             $table->integer('max_capacity'); // 最大定員数
-            $table->time('number_of_sales'); // 販売可能数
+            $table->integer('number_of_sales'); // 販売可能数
             $table->boolean('connectable'); // コネクト
 
             $table->timestamps();
