@@ -16,7 +16,7 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('release_state', ['public', 'private']); // 公開状態
-            $table->enum('kind', ['cource_menu', 'only_table']); // 区分
+            $table->enum('kind', ['course_menu', 'only_table']); // 区分
             $table->string('title'); // メニュー名
             $table->integer('price'); // 料金
             $table->integer('duration_minutes'); // 滞在時間(分)
