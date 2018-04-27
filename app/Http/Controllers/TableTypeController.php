@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TableType;
 
 class TableTypeController extends Controller
 {
@@ -13,7 +14,7 @@ class TableTypeController extends Controller
      */
     public function index()
     {
-        //
+        return view('table_types.index', ['tableTypes' => TableType::all()]);
     }
 
     /**
