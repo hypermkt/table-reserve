@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<a href="/table_types/create">席タイプを登録する</a>
 
 <table border="1">
     <tr>

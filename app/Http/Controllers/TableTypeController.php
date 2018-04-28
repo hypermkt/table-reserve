@@ -24,7 +24,7 @@ class TableTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('table_types.create');
     }
 
     /**
@@ -35,7 +35,18 @@ class TableTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        TableType::create([
+            'release_state' => $request->release_state,
+            'title' => $request->title,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'minimum_capacity' => $request->minimum_capacity,
+            'max_capacity' => $request->max_capacity,
+            'number_of_sales' => $request->number_of_sales,
+            'connectable' => $request->connectable,
+        ]);
+
+        return redirect()->to('/table_types');
     }
 
     /**
