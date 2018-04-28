@@ -68,7 +68,7 @@ class TableTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('table_types.edit', ['tableType' => TableType::find($id)]);
     }
 
     /**
@@ -80,7 +80,17 @@ class TableTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tableType = TableType::find($id);
+        $tableType->title = $request->title;
+        $tableType->start_time = $request->start_time;
+        $tableType->end_time = $request->end_time;
+        $tableType->minimum_capacity = $request->minimum_capacity;
+        $tableType->max_capacity = $request->max_capacity;
+        $tableType->number_of_sales = $request->number_of_sales;
+        $tableType->connectable = $request->connectable;
+        $tableType->save();
+
+        return redirect()->to('/table_types');
     }
 
     /**

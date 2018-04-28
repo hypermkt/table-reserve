@@ -27,7 +27,10 @@
         <td>{{ $tableType->max_capacity }}</td>
         <td>{{ $tableType->number_of_sales }}</td>
         <td>{{ $tableType->connectable }}</td>
-        <td><a href="/table_types/{{ $tableType->id }}">詳細</a></td>
+        <td>
+            <a href="/table_types/{{ $tableType->id }}">詳細</a>
+            <a href="/table_types/{{ $tableType->id }}/edit">編集</a>
+        </td>
     </tr>
 @endforeach
 </table>
