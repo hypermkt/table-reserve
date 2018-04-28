@@ -6,6 +6,14 @@
         {{ csrf_field() }}
     <table border="1">
         <tr>
+            <th>席タイプ</th>
+            <td>
+                @foreach ($tableTypes as $tableType)
+                    <input type="checkbox" name="table_types[]" value="{{ $tableType->id }}">{{ $tableType->title }}
+                @endforeach
+            </td>
+        </tr>
+        <tr>
             <th>公開状態</th>
             <td>
                 公開<input type="radio" name="release_state" value="public">

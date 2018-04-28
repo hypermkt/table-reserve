@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\TableType;
+use Encore\Admin\Widgets\Table;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -24,7 +26,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
+        return view('courses.create', ['tableTypes' => TableType::all()]);
     }
 
     /**
@@ -35,13 +37,15 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        Course::create([
+        $course = Course::create([
             'release_state' => $request->release_state,
             'kind' => $request->kind,
             'title' => $request->title,
             'price' => $request->price,
             'duration_minutes' => $request->duration_minutes,
         ]);
+
+        $course->tableTypes()->attach($request->type_types);
 
         return redirect()->to('/courses');
     }
