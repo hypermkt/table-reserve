@@ -46,7 +46,7 @@ class TableTypeController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('table_types.show', ['tableType' => TableType::find($id)]);
     }
 
     /**
