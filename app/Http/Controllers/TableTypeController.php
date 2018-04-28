@@ -96,11 +96,13 @@ class TableTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\TableType $tableType
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TableType $tableType)
     {
-        //
+        $tableType->delete();
+
+        return redirect()->to('/table_types');
     }
 }

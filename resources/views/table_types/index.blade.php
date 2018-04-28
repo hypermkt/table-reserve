@@ -30,6 +30,10 @@
         <td>
             <a href="/table_types/{{ $tableType->id }}">詳細</a>
             <a href="/table_types/{{ $tableType->id }}/edit">編集</a>
+            @component('components.btn-del')
+                @slot('table', 'table_types')
+                @slot('id', $tableType->id)
+            @endcomponent
         </td>
     </tr>
 @endforeach
