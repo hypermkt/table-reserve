@@ -24,7 +24,7 @@
         <tr>
             <th>区分</th>
             <td>
-                コースメニュー<input type="radio" name="kind" value="course">
+                コースメニュー<input type="radio" name="kind" value="course_menu">
                 席のみ<input type="radio" name="kind" value="only_table">
             </td>
         </tr>
