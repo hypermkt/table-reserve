@@ -13,6 +13,7 @@
         <th>最大定員数</th>
         <th>販売可能数</th>
         <th>コネクト</th>
+        <th>Action</th>
     </tr>
 @foreach ($tableTypes as $tableType)
     <tr>
@@ -25,6 +26,7 @@
         <td>{{ $tableType->max_capacity }}</td>
         <td>{{ $tableType->number_of_sales }}</td>
         <td>{{ $tableType->connectable }}</td>
+        <td><a href="/table_types/{{ $tableType->id }}">詳細</a></td>
     </tr>
 @endforeach
 </table>
