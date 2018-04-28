@@ -35,7 +35,15 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Course::create([
+            'release_state' => $request->release_state,
+            'kind' => $request->kind,
+            'title' => $request->title,
+            'price' => $request->price,
+            'duration_minutes' => $request->duration_minutes,
+        ]);
+
+        return redirect()->to('/courses');
     }
 
     /**
