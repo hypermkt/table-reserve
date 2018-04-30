@@ -7,11 +7,20 @@
         @method('put')
     <table border="1">
         <tr>
+            <th>席タイプ</th>
+            <td>
+                @foreach ($tableTypes as $tableType)
+                    <input type="checkbox" name="table_types[]" value="{{ $tableType->id }}"
+                        @if (in_array($tableType->id, $course->tableTypes->pluck('id')->toArray())) checked @endif
+                    >{{ $tableType->title }}
+                @endforeach
+            </td>
+        </tr>
+        <tr>
             <th>公開状態</th>
             <td>
                 公開<input type="radio" name="release_state" value="public" @if ($course->release_state == 'public') checked @endif>
                 非公開<input type="radio" name="release_state" value="private" @if ($course->release_state == 'private') checked @endif>
-
             </td>
         </tr>
         <tr>

@@ -69,7 +69,10 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        return view('courses.edit', ['course' => Course::find($id)]);
+        return view('courses.edit', [
+            'course' => Course::find($id),
+            'tableTypes' => TableType::all()
+        ]);
     }
 
     /**
@@ -88,6 +91,8 @@ class CourseController extends Controller
         $course->price = $request->price;
         $course->duration_minutes = $request->duration_minutes;
         $course->save();
+
+        $course->tableTypes()->sync($request->table_types);
 
         return redirect()->to('/courses');
     }
