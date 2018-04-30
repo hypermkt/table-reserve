@@ -12,4 +12,9 @@ class TableType extends Model
     {
         return $this->belongsToMany('App\Course');
     }
+
+    public function stocks()
+    {
+        return $this->hasMany('App\Stock');
+    }
 }
