@@ -105,6 +105,7 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
+        $course->tableTypes()->detach();
         $course->delete();
 
         return redirect()->to('/courses');
