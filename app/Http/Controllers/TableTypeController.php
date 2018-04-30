@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TableTypeRequest;
 use Illuminate\Http\Request;
 use App\TableType;
 
@@ -30,22 +31,11 @@ class TableTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  TableTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TableTypeRequest $request)
     {
-        $validatedData = $request->validate([
-            'release_state' => 'required',
-            'title' => 'required:max:255',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i',
-            'minimum_capacity' => 'required|numeric',
-            'max_capacity' => 'required|numeric',
-            'number_of_sales' => 'required|numeric',
-            'connectable' => 'required|boolean',
-        ]);
-
         TableType::create([
             'release_state' => $request->release_state,
             'title' => $request->title,
