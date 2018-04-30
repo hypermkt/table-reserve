@@ -45,7 +45,7 @@ class CourseController extends Controller
             'duration_minutes' => $request->duration_minutes,
         ]);
 
-        $course->tableTypes()->attach($request->type_types);
+        $course->tableTypes()->attach($request->table_types);
 
         return redirect()->to('/courses');
     }
