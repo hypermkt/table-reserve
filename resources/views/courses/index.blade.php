@@ -33,4 +33,5 @@
 @endforeach
 </table>
 
+<a href="/">トップページに戻る</a>
 @endsection
