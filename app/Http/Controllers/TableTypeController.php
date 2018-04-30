@@ -75,11 +75,11 @@ class TableTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  TableTypeRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TableTypeRequest $request, $id)
     {
         $tableType = TableType::find($id);
         $tableType->title = $request->title;
