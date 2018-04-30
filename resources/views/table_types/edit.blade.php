@@ -3,7 +3,8 @@
 @section('content')
 
     <form action="/table_types/{{ $tableType->id }}" method="post">
-        {{ csrf_field() }}
+        @csrf
+        @method('put')
     <table border="1">
         <tr>
             <th>公開状態</th>
