@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Http\Requests\CourseRequest;
 use App\TableType;
 use Encore\Admin\Widgets\Table;
 use Illuminate\Http\Request;
@@ -32,10 +33,10 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CourseRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
         $course = Course::create([
             'release_state' => $request->release_state,
@@ -78,11 +79,11 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CourseRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CourseRequest $request, $id)
     {
         $course = Course::find($id);
         $course->release_state = $request->release_state;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TableTypeRequest;
 use Illuminate\Http\Request;
 use App\TableType;
 
@@ -30,10 +31,10 @@ class TableTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  TableTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TableTypeRequest $request)
     {
         TableType::create([
             'release_state' => $request->release_state,
@@ -74,11 +75,11 @@ class TableTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  TableTypeRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TableTypeRequest $request, $id)
     {
         $tableType = TableType::find($id);
         $tableType->title = $request->title;

@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    @component('components.validation-error')
+        @slot('errors', $errors)
+    @endcomponent
 
     <form action="/table_types/{{ $tableType->id }}" method="post">
-        {{ csrf_field() }}
+        @csrf
+        @method('put')
     <table border="1">
         <tr>
             <th>公開状態</th>
@@ -19,12 +23,12 @@
         </tr>
         <tr>
             <th>利用開始時間</th>
-            <td><input type="text" name="start_time" value="{{ $tableType->start_time }}"></td>
+            <td><input type="text" name="start_time" value="{{ \Carbon\Carbon::parse($tableType->start_time)->format('H:i') }}"></td>
         </tr>
         </tr>
         <tr>
             <th>利用終了時間</th>
-            <td><input type="text" name="end_time" value="{{ $tableType->end_time }}"></td>
+            <td><input type="text" name="end_time" value="{{ \Carbon\Carbon::parse($tableType->end_time)->format('H:i') }}"></td>
         </tr>
         <tr>
             <th>最低定員数</th>

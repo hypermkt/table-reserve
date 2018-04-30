@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @component('components.validation-error')
+        @slot('errors', $errors)
+    @endcomponent
 
     <form action="/courses" method="post">
         {{ csrf_field() }}
