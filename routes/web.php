@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('table_types', 'TableTypeController');
+Route::resource('courses', 'CourseController');
