@@ -8,6 +8,14 @@
         <td>{{ $course->id }}</td>
     </tr>
     <tr>
+        <th>席タイプ</th>
+        <td>
+            @foreach ($course->tableTypes as $tableType)
+                <p>{{ $tableType->title }}</p>
+            @endforeach
+        </td>
+    </tr>
+    <tr>
         <th>公開状態</th>
         <td>{{ $course->release_state }}</td>
     </tr>
