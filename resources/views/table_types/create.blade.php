@@ -1,16 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @component('components.validation-error')
+        @slot('errors', $errors)
+    @endcomponent
 
     <form action="/table_types" method="post">
         {{ csrf_field() }}
