@@ -14,9 +14,9 @@ class StockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $baseDate = Carbon::now()->format('Y-m');
+        $baseDate = $request->month ?? Carbon::now()->format('Y-m');
 
         $acceptableTableNumbers = Stock::where('accept_date', '>=', Carbon::parse($baseDate)->format('Y-m-01'))
             ->where('accept_date', '<', Carbon::parse($baseDate)->addMonth(1)->format('Y-m-01'))
@@ -26,7 +26,7 @@ class StockController extends Controller
 
         $stocksTable = [];
         for ($i = 0; $i < Carbon::parse($baseDate)->daysInMonth; $i++) {
-            $date = $baseDate . '-' . ($i + 1);
+            $date = $baseDate . '-' . sprintf('%02d', ($i + 1));
             $stocksTable[$i]['formatted_date'] = Carbon::parse($date)->format('Y-m-d(D)');
             $stocksTable[$i]['accept_date_value'] = Carbon::parse($date)->format('Y-m-d');
             $stocksTable[$i]['acceptable_table_number'] = $acceptableTableNumbers[$date] ?? null;
@@ -36,6 +36,8 @@ class StockController extends Controller
             'tableTypes' => TableType::all(),
             'baseDate' => $baseDate,
             'stocksTable' => $stocksTable,
+            'nextMonth' => Carbon::parse($baseDate)->addMonth(1)->format('Y-m'),
+            'prevMonth' => Carbon::parse($baseDate)->addMonth(-1)->format('Y-m'),
         ]);
     }
 

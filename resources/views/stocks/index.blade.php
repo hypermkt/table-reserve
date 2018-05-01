@@ -3,7 +3,9 @@
 @section('content')
     <p>在庫管理</p>
 
+    <p><a href="/stocks?month={{ $prevMonth }}">前</a></p>
     {{ $baseDate }}
+    <p><a href="/stocks?month={{ $nextMonth }}">次</a></p>
     <form action="/stocks" method="post">
         {{ @csrf_field() }}
     <table border="1">
