@@ -18,7 +18,7 @@ class CreateStocksTable extends Migration
             $table->integer('table_type_id')->unsigned();
             $table->foreign('table_type_id')->references('id')->on('table_types');
             $table->date('accept_date');
-            $table->date('acceptable_table_number');
+            $table->integer('acceptable_table_number');
             $table->timestamps();
         });
     }
