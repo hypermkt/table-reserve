@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\TableType;
 
@@ -14,7 +15,14 @@ class StockController extends Controller
      */
     public function index()
     {
-        return view('stocks.index', ['tableTypes' => TableType::all()]);
+        $baseDate = Carbon::now()->format('Y-m');
+        $daysInMonth = Carbon::parse($baseDate)->daysInMonth;
+
+        return view('stocks.index', [
+            'tableTypes' => TableType::all(),
+            'baseDate' => $baseDate,
+            'daysInMonth' => $daysInMonth,
+        ]);
     }
 
     /**
