@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::resource('table_types', 'TableTypeController');
 Route::resource('courses', 'CourseController');
+Route::resource('stocks', 'StockController');
