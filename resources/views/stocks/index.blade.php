@@ -4,6 +4,8 @@
     <p>在庫管理</p>
 
     {{ $baseDate }}
+    <form action="/stocks" method="post">
+        {{ @csrf_field() }}
     <table border="1">
         <tr>
             <td>日付</td>
@@ -11,18 +13,20 @@
                 <td>{{ $tableType->title }}</td>
             @endforeach
         </tr>
-        @for ($i = 1; $i <= $daysInMonth; $i++ )
+        @for ($i = 0; $i < count($stocksTable); $i++ )
         <tr>
-            <td>{{ \Carbon\Carbon::parse($baseDate . '-' . $i)->format('Y-m-d(D)') }}</td>
+            <td>{{ $stocksTable[$i]['formatted_date'] }}</td>
             @foreach ($tableTypes as $tableType)
             <td>
-                <p><input type="checkbox">予約受付</p>
-                <p><input type="text" size="5">卓</p>
+                <p><input name="accept_dates[{{ $i }}:{{ $tableType->id }}]" type="checkbox" value="{{ $stocksTable[$i]['accept_date_value'] }}" @isset($stocksTable[$i]['acceptable_table_number']) checked @endisset>予約受付</p>
+                <p><input name="acceptable_table_numbers[{{ $i }}:{{ $tableType->id }}]" type="text" size="5" value="{{ $stocksTable[$i]['acceptable_table_number']  }}">卓</p>
             </td>
             @endforeach
         </tr>
         @endfor
     </table>
-
+        <input type="hidden" name="baseDate" value="{{ $baseDate }}">
+        <input type="submit" value="送信">
+    </form>
 <a href="/">トップページに戻る</a>
 @endsection

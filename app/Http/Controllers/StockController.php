@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\TableType;
+use App\Stock;
 
 class StockController extends Controller
 {
@@ -16,12 +17,21 @@ class StockController extends Controller
     public function index()
     {
         $baseDate = Carbon::now()->format('Y-m');
-        $daysInMonth = Carbon::parse($baseDate)->daysInMonth;
+
+        $acceptableTableNumbers = Stock::where('accept_date', '>=', '2018-05-01')->where('accept_date', '<', '2018-06-01')->get()->pluck('acceptable_table_number', 'accept_date')->toArray();
+
+        $stocksTable = [];
+        for ($i = 0; $i < Carbon::parse($baseDate)->daysInMonth; $i++) {
+            $date = $baseDate . '-' . ($i + 1);
+            $stocksTable[$i]['formatted_date'] = Carbon::parse($date)->format('Y-m-d(D)');
+            $stocksTable[$i]['accept_date_value'] = Carbon::parse($date)->format('Y-m-d');
+            $stocksTable[$i]['acceptable_table_number'] = $acceptableTableNumbers[$date] ?? null;
+        }
 
         return view('stocks.index', [
             'tableTypes' => TableType::all(),
             'baseDate' => $baseDate,
-            'daysInMonth' => $daysInMonth,
+            'stocksTable' => $stocksTable,
         ]);
     }
 
@@ -43,7 +53,22 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Stock::where('accept_date', '>=', '2018-05-01')->where('accept_date', '<', '2018-06-01')->delete();
+
+        if (is_array($request->accept_dates) && is_array($request->acceptable_table_numbers)) {
+            foreach ($request->accept_dates as $key => $accept_date) {
+                $acceptable_table_number = $request->acceptable_table_numbers[$key] ?? null;
+                if (isset($accept_date) && isset($acceptable_table_number)) {
+                    $arr = explode(':', $key);
+                    Stock::updateOrCreate(
+                        ['table_type_id' => $arr[1], 'accept_date' => $accept_date],
+                        ['table_type_id' => $arr[1], 'accept_date' => $accept_date, 'acceptable_table_number' => $acceptable_table_number]
+                    );
+                }
+            }
+        }
+
+        return redirect()->to('/stocks');
     }
 
     /**
