@@ -18,7 +18,11 @@ class StockController extends Controller
     {
         $baseDate = Carbon::now()->format('Y-m');
 
-        $acceptableTableNumbers = Stock::where('accept_date', '>=', '2018-05-01')->where('accept_date', '<', '2018-06-01')->get()->pluck('acceptable_table_number', 'accept_date')->toArray();
+        $acceptableTableNumbers = Stock::where('accept_date', '>=', Carbon::parse($baseDate)->format('Y-m-01'))
+            ->where('accept_date', '<', Carbon::parse($baseDate)->addMonth(1)->format('Y-m-01'))
+            ->get()
+            ->pluck('acceptable_table_number', 'accept_date')
+            ->toArray();
 
         $stocksTable = [];
         for ($i = 0; $i < Carbon::parse($baseDate)->daysInMonth; $i++) {
@@ -53,7 +57,8 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        Stock::where('accept_date', '>=', '2018-05-01')->where('accept_date', '<', '2018-06-01')->delete();
+        Stock::where('accept_date', '>=', Carbon::parse($request->baseDate)->format('Y-m-01'))
+            ->where('accept_date', '<', Carbon::parse($request->baseDate)->addMonth(1)->format('Y-m-01'))->delete();
 
         if (is_array($request->accept_dates) && is_array($request->acceptable_table_numbers)) {
             foreach ($request->accept_dates as $key => $accept_date) {
