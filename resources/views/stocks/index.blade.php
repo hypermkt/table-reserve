@@ -15,7 +15,10 @@
         <tr>
             <td>{{ \Carbon\Carbon::parse($baseDate . '-' . $i)->format('Y-m-d(D)') }}</td>
             @foreach ($tableTypes as $tableType)
-            <td></td>
+            <td>
+                <p><input type="checkbox">予約受付</p>
+                <p><input type="text" size="5">卓</p>
+            </td>
             @endforeach
         </tr>
         @endfor
