@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TableType;
 
 class StockController extends Controller
 {
@@ -13,7 +14,7 @@ class StockController extends Controller
      */
     public function index()
     {
-        return view('stocks.index');
+        return view('stocks.index', ['tableTypes' => TableType::all()]);
     }
 
     /**
