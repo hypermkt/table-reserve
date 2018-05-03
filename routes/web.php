@@ -22,7 +22,10 @@ Route::get('login', ['as' => 'login', 'uses' => function () {
 Route::resource('table_types', 'TableTypeController')->middleware('auth');
 Route::resource('courses', 'CourseController')->middleware('auth');
 Route::resource('stocks', 'StockController')->middleware('auth');
-Route::resource('reservations', 'ReservationController')->only(['index', 'show']);
+
+Route::prefix('reservations')->group(function () {
+    Route::resource('courses', 'Reservation\CourseController')->only(['index', 'show']);
+});
 
 Route::get('auth/twitter', 'Auth\SocialLoginController@redirectToProvider');
 Route::get('auth/twitter/callback', 'Auth\SocialLoginController@handleProviderCallback');

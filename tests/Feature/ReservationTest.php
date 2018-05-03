@@ -10,13 +10,13 @@ class ReservationTest extends TestCase
 {
     public function testIndex()
     {
-        $response = $this->get('/reservations');
+        $response = $this->get('/reservations/courses');
         $response->assertstatus(200);
     }
 
     public function testShow()
     {
-        $response = $this->get('/reservations/1');
+        $response = $this->get('/reservations/courses/1');
         $response->assertstatus(200);
     }
 }
