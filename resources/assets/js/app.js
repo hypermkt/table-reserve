@@ -7,7 +7,11 @@
 
 require('./bootstrap');
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 window.Vue = require('vue');
+Vue.use(ElementUI);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
