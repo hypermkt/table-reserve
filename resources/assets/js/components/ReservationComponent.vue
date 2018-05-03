@@ -50,7 +50,7 @@ import 'v-calendar/lib/v-calendar.min.css';
 export default {
     data() {
        return {
-           selectedDate: '',
+           selectedDate: null,
            form: {
                name: '',
                email: '',
