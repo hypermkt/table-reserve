@@ -12,6 +12,7 @@ class TableTypesSeeder extends Seeder
     public function run()
     {
         DB::table('table_types')->insert([
+            'user_id' => App\User::first()->id,
             'release_state' => 'public',
             'title' => '小テーブル',
             'start_time' => '17:00:00',
@@ -23,6 +24,7 @@ class TableTypesSeeder extends Seeder
         ]);
 
         DB::table('table_types')->insert([
+            'user_id' => App\User::first()->id,
             'release_state' => 'public',
             'title' => '中テーブル',
             'start_time' => '17:00:00',
