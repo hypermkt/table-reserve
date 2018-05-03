@@ -18,5 +18,9 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "element-ui": "^2.3.7",
+        "v-calendar": "^0.9.7"
     }
 }
