@@ -15,6 +15,8 @@ class CreateCourseTableTypeTable extends Migration
     {
         Schema::create('course_table_type', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses');
             $table->integer('table_type_id')->unsigned();

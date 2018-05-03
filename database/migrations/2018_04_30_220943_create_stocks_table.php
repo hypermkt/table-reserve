@@ -15,6 +15,8 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('table_type_id')->unsigned();
             $table->foreign('table_type_id')->references('id')->on('table_types');
             $table->date('accept_date');
