@@ -12,13 +12,11 @@ class CourseTableTypeSeeder extends Seeder
     public function run()
     {
         DB::table('course_table_type')->insert([
-            'user_id' => App\User::first()->id,
             'course_id' => 1,
             'table_type_id' => 1,
         ]);
 
         DB::table('course_table_type')->insert([
-            'user_id' => App\User::first()->id,
             'course_id' => 2,
             'table_type_id' => 2,
         ]);
