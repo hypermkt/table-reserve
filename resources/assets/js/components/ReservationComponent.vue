@@ -81,5 +81,10 @@ export default {
     components: {
         'v-calendar': Calendar
     },
+    methods: {
+        onSubmit: function() {
+
+        }
+    }
 }
 </script>
