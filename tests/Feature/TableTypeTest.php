@@ -10,6 +10,8 @@ class TableTypeTest extends TestCase
 {
     public function setUp()
     {
+        // MEMO: Laravelで独自のsetUpを呼ぶ場合は、parent::setUpの呼び出しが必要
+        // refs: https://readouble.com/laravel/5.6/ja/testing.html
         parent::setUp();
         $user = factory(\App\User::class)->create();
         $this->actingAs($user);
