@@ -8,6 +8,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CourseTest extends TestCase
 {
+    public function setUp()
+    {
+        parent::setUp();
+        $user = factory(\App\User::class)->create();
+        $this->actingAs($user);
+    }
+
     public function testIndex()
     {
         $response = $this->get('/courses');
@@ -30,6 +37,7 @@ class CourseTest extends TestCase
             'price' => 1000,
             'duration_minutes' => 60,
         ]);
+
         $response->assertRedirect('/courses');
     }
 }

@@ -12,6 +12,7 @@ class CoursesSeeder extends Seeder
     public function run()
     {
         DB::table('courses')->insert([
+            'user_id' => App\User::first()->id,
             'release_state' => 'public',
             'kind' => 'course_menu',
             'title' => '店長オススメ！2時間飲み放題付『国産牛すき焼きと刺身７点盛りプラン』',
@@ -20,6 +21,7 @@ class CoursesSeeder extends Seeder
         ]);
 
         DB::table('courses')->insert([
+            'user_id' => App\User::first()->id,
             'release_state' => 'public',
             'kind' => 'course_menu',
             'title' => '2時間飲み放題付『牛タンの野菜蒸しコース』4,000円(打上げ　歓送迎会　飲み会　女子会)',

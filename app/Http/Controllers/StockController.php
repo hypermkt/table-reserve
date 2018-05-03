@@ -68,8 +68,8 @@ class StockController extends Controller
                 if (isset($accept_date) && isset($acceptable_table_number)) {
                     $arr = explode(':', $key);
                     Stock::updateOrCreate(
-                        ['table_type_id' => $arr[1], 'accept_date' => $accept_date],
-                        ['table_type_id' => $arr[1], 'accept_date' => $accept_date, 'acceptable_table_number' => $acceptable_table_number]
+                        ['user_id' => Auth::id(), 'table_type_id' => $arr[1], 'accept_date' => $accept_date],
+                        ['user_id' => Auth::id(), 'table_type_id' => $arr[1], 'accept_date' => $accept_date, 'acceptable_table_number' => $acceptable_table_number]
                     );
                 }
             }

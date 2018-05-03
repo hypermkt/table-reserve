@@ -15,9 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('table_types', 'TableTypeController');
-Route::resource('courses', 'CourseController');
-Route::resource('stocks', 'StockController');
+Route::get('login', ['as' => 'login', 'uses' => function () {
+    return view('welcome');
+}]);
+
+Route::resource('table_types', 'TableTypeController')->middleware('auth');
+Route::resource('courses', 'CourseController')->middleware('auth');
+Route::resource('stocks', 'StockController')->middleware('auth');
 
 Route::get('auth/twitter', 'Auth\SocialLoginController@redirectToProvider');
 Route::get('auth/twitter/callback', 'Auth\SocialLoginController@handleProviderCallback');
