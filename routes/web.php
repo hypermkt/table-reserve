@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('login', ['as' => 'login', 'uses' => function () {
+    return view('welcome');
+}]);
+
 Route::resource('table_types', 'TableTypeController')->middleware('auth');
 Route::resource('courses', 'CourseController')->middleware('auth');
 Route::resource('stocks', 'StockController')->middleware('auth');
