@@ -7,6 +7,7 @@ use App\Http\Requests\CourseRequest;
 use App\TableType;
 use Encore\Admin\Widgets\Table;
 use Illuminate\Http\Request;
+use Auth;
 
 class CourseController extends Controller
 {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TableTypeRequest;
 use Illuminate\Http\Request;
 use App\TableType;
+use Auth;
 
 class TableTypeController extends Controller
 {

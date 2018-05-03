@@ -37,6 +37,7 @@ class CourseTest extends TestCase
             'price' => 1000,
             'duration_minutes' => 60,
         ]);
+
         $response->assertRedirect('/courses');
     }
 }
