@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Socialite;
+use Auth;
 
 class SocialLoginController extends Controller
 {
@@ -15,7 +17,7 @@ class SocialLoginController extends Controller
 
     public function handleProviderCallback()
     {
-        $twitterUser = Socialite::driver('twitter')->user();
+        $twitterUser = Socialite::driver('Twitter')->user();
 
         $user = $this->findOrCreateUser($twitterUser);
 
