@@ -17,4 +17,9 @@ class TableType extends Model
     {
         return $this->hasMany('App\Stock');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

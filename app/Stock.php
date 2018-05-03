@@ -12,4 +12,9 @@ class Stock extends Model
     {
         return $this->belongsTo('App\TableType');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
