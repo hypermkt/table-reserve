@@ -37,6 +37,7 @@ class TableTypeController extends Controller
     public function store(TableTypeRequest $request)
     {
         TableType::create([
+            'user_id' => Auth::id(),
             'release_state' => $request->release_state,
             'title' => $request->title,
             'start_time' => $request->start_time,

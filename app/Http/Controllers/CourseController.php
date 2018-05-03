@@ -39,6 +39,7 @@ class CourseController extends Controller
     public function store(CourseRequest $request)
     {
         $course = Course::create([
+            'user_id' => Auth::id(),
             'release_state' => $request->release_state,
             'kind' => $request->kind,
             'title' => $request->title,
