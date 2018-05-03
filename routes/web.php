@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::resource('table_types', 'TableTypeController');
 Route::resource('courses', 'CourseController');
 Route::resource('stocks', 'StockController');
+
+Route::get('auth/twitter', 'Auth\SocialLoginController@redirectToProvider');
+Route::get('auth/twitter/callback', 'Auth\SocialLoginController@handleProviderCallback');
+Route::get('auth/twitter/logout', 'Auth\SocialLoginController@logout');
