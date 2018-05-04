@@ -10,4 +10,9 @@ class Page extends Model
     {
         $this->belongsTo('App\User');
     }
+
+    public function courses()
+    {
+        $this->hasMany('App\Course');
+    }
 }

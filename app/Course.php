@@ -17,4 +17,9 @@ class Course extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function page()
+    {
+        return $this->belongsTo('App\Page');
+    }
 }
