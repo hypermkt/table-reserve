@@ -22,6 +22,7 @@ Route::get('login', ['as' => 'login', 'uses' => function () {
 Route::resource('table_types', 'TableTypeController')->middleware('auth');
 Route::resource('courses', 'CourseController')->middleware('auth');
 Route::resource('stocks', 'StockController')->middleware('auth');
+Route::resource('pages', 'PageController')->middleware('auth');
 
 Route::prefix('reservations')->group(function () {
     Route::resource('courses', 'Reservation\CourseController')->only(['index', 'show']);
