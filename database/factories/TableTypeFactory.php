@@ -1,0 +1,27 @@
+<?php
+
+use Faker\Generator as Faker;
+
+/*
+|--------------------------------------------------------------------------
+| Model Factories
+|--------------------------------------------------------------------------
+|
+| This directory should contain each of the model factory definitions for
+| your application. Factories provide a convenient way to generate new
+| model instances for testing / seeding your application's database.
+|
+*/
+
+$factory->define(App\TableType::class, function (Faker $faker) {
+    return [
+        'release_state' => 'public',
+        'title' => $faker->name,
+        'start_time' => '10:00',
+        'end_time' => '18:00',
+        'minimum_capacity' => '1',
+        'max_capacity' => '4',
+        'number_of_sales' => '4',
+        'connectable' => true,
+    ];
+});
