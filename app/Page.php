@@ -13,8 +13,8 @@ class Page extends Model
         $this->belongsTo('App\User');
     }
 
-    public function courses()
+    public function tableTypes()
     {
-        $this->hasMany('App\Course');
+        return $this->hasMany('App\TableType');
     }
 }
