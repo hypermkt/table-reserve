@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<a href="/courses/create">コースを登録する</a>
+<a href="/pages/{{ $pageId }}/courses/create">コースを登録する</a>
 
 <table border="1">
     <tr>
@@ -22,10 +22,10 @@
         <td>{{ $course->price }}</td>
         <td>{{ $course->duration_minutes }}</td>
         <td>
-            <a href="/courses/{{ $course->id }}">詳細</a>
-            <a href="/courses/{{ $course->id }}/edit">編集</a>
+            <a href="/pages/{{ $pageId }}/courses/{{ $course->id }}">詳細</a>
+            <a href="/pages/{{ $pageId }}/courses/{{ $course->id }}/edit">編集</a>
             @component('components.btn-del')
-                @slot('table', 'courses')
+                @slot('table', 'pages/' . $pageId . '/courses')
                 @slot('id', $course->id)
             @endcomponent
         </td>
@@ -33,5 +33,5 @@
 @endforeach
 </table>
 
-<a href="/">トップページに戻る</a>
+<a href="/pages/{{ $pageId }}">ページに戻る</a>
 @endsection

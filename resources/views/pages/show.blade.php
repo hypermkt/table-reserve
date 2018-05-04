@@ -22,6 +22,8 @@
 </table>
 
 <p><a href="/pages/{{ $page->id }}/table_types">席タイプ設定</a></p>
+<p><a href="/pages/{{ $page->id }}/courses">コース設定</a></p>
+<p><a href="/pages/{{ $page->id }}/stocks">在庫設定</a></p>
 
 <a href="/pages">戻る</a>
 

@@ -20,8 +20,8 @@ Route::get('login', ['as' => 'login', 'uses' => function () {
 }]);
 
 Route::resource('pages/{pageId}/table_types', 'TableTypeController')->middleware('auth');
-Route::resource('courses', 'CourseController')->middleware('auth');
-Route::resource('stocks', 'StockController')->middleware('auth');
+Route::resource('pages/{pageId}/courses', 'CourseController')->middleware('auth');
+Route::resource('pages/{pageId}/stocks', 'StockController')->middleware('auth');
 Route::resource('pages', 'PageController')->middleware('auth');
 
 Route::prefix('reservations')->group(function () {
