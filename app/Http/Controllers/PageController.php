@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Page;
+use Auth;
 
 class PageController extends Controller
 {
@@ -13,7 +15,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.index', ['pages' => Page::all()]);
     }
 
     /**
@@ -23,7 +25,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.create');
     }
 
     /**
@@ -34,7 +36,14 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Page::create([
+            'user_id' => Auth::id(),
+            'title' => $request->title,
+            'description' => $request->description,
+            'release_state' => $request->release_state,
+        ]);
+
+        return redirect()->to('/pages');
     }
 
     /**
@@ -45,7 +54,7 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pages.show', ['page' => Page::find($id)]);
     }
 
     /**
@@ -56,7 +65,7 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pages.edit', ['page' => Page::find($id)]);
     }
 
     /**
@@ -68,7 +77,13 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $page = Page::find($id);
+        $page->title = $request->title;
+        $page->description = $request->description;
+        $page->release_state = $request->release_state;
+        $page->save();
+
+        return redirect()->to('/pages');
     }
 
     /**
@@ -79,6 +94,9 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $page = Page::find($id);
+        $page->delete();
+
+        return redirect()->to('/pages');
     }
 }
