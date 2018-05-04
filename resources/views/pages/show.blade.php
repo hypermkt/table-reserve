@@ -21,6 +21,8 @@
     </tr>
 </table>
 
+<p><a href="/pages/{{ $page->id }}/table_types">席タイプ設定</a></p>
+
 <a href="/pages">戻る</a>
 
 @endsection

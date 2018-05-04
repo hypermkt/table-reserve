@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TableType extends Model
 {
-    protected $fillable = ['user_id', 'release_state', 'title', 'start_time', 'end_time', 'minimum_capacity', 'max_capacity', 'number_of_sales', 'connectable'];
+    protected $fillable = ['page_id', 'user_id', 'release_state', 'title', 'start_time', 'end_time', 'minimum_capacity', 'max_capacity', 'number_of_sales', 'connectable'];
 
     public function courses()
     {

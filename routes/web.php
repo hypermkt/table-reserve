@@ -19,7 +19,7 @@ Route::get('login', ['as' => 'login', 'uses' => function () {
     return view('welcome');
 }]);
 
-Route::resource('table_types', 'TableTypeController')->middleware('auth');
+Route::resource('pages/{pageId}/table_types', 'TableTypeController')->middleware('auth');
 Route::resource('courses', 'CourseController')->middleware('auth');
 Route::resource('stocks', 'StockController')->middleware('auth');
 Route::resource('pages', 'PageController')->middleware('auth');
