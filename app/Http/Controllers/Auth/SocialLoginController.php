@@ -36,8 +36,8 @@ class SocialLoginController extends Controller
 
         // https://github.com/SocialiteProviders/Twitter/blob/master/Provider.php#L20
         return User::create([
-            'name' => $twitterUser->name,
-            'handle' => $twitterUser->nickname,
+            'name' => $twitterUser->nickname,
+            'handle' => $twitterUser->name,
             'twitter_id' => $twitterUser->id,
             'avatar' => $twitterUser->avatar,
         ]);
