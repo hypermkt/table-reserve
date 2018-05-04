@@ -15,6 +15,8 @@ class CreateTableTypesTable extends Migration
     {
         Schema::create('table_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('page_id')->unsigned();
+            $table->foreign('page_id')->references('id')->on('pages');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->enum('release_state', ['public', 'private']); // 公開状態
