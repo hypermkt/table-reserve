@@ -23,7 +23,7 @@ class SocialLoginController extends Controller
 
         Auth::login($user, true);
 
-        return redirect()->to('/');
+        return redirect()->to('/pages');
     }
 
     protected function findOrCreateUser($twitterUser)

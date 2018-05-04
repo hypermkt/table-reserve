@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Stock');
     }
+
+    public function pages()
+    {
+        return $this->hasMany('App\Page');
+    }
 }

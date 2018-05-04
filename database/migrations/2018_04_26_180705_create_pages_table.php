@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStocksTable extends Migration
+class CreatePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateStocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('stocks', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('table_type_id')->unsigned();
-            $table->foreign('table_type_id')->references('id')->on('table_types')->onDelete('cascade');;
-            $table->date('accept_date');
-            $table->integer('acceptable_table_number');
+            $table->string('title');
+            $table->text('description');
+            $table->enum('release_state', ['public', 'private']);
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateStocksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stocks');
+        Schema::dropIfExists('pages');
     }
 }

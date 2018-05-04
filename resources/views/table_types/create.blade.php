@@ -5,7 +5,7 @@
         @slot('errors', $errors)
     @endcomponent
 
-    <form action="/table_types" method="post">
+    <form action="/pages/{{ $pageId }}/table_types" method="post">
         {{ csrf_field() }}
     <table border="1">
         <tr>
@@ -52,6 +52,6 @@
         <input type="submit" value="送信">
     </form>
 
-    <a href="/table_types">戻る</a>
+    <a href="/pages/{{ $pageId }}/table_types">戻る</a>
 
 @endsection

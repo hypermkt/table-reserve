@@ -37,6 +37,6 @@
     </tr>
 </table>
 
-<a href="/courses">戻る</a>
+<a href="/pages/{{ $pageId }}/courses">戻る</a>
 
 @endsection
