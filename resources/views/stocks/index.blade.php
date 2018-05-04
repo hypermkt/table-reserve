@@ -3,10 +3,10 @@
 @section('content')
     <p>在庫管理</p>
 
-    <p><a href="/stocks?month={{ $prevMonth }}">前</a></p>
+    <p><a href="/pages/{{ $pageId }}/stocks?month={{ $prevMonth }}">前</a></p>
     {{ $baseDate }}
-    <p><a href="/stocks?month={{ $nextMonth }}">次</a></p>
-    <form action="/stocks" method="post">
+    <p><a href="/pages/{{ $pageId }}/stocks?month={{ $nextMonth }}">次</a></p>
+    <form action="/pages/{{ $pageId }}/stocks" method="post">
         {{ @csrf_field() }}
     <table border="1">
         <tr>
@@ -30,5 +30,5 @@
         <input type="hidden" name="baseDate" value="{{ $baseDate }}">
         <input type="submit" value="送信">
     </form>
-<a href="/">トップページに戻る</a>
+<a href="/pages/{{ $pageId }}">ページに戻る</a>
 @endsection

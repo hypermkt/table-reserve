@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\TableType;
 use App\Stock;
+use Auth;
 
 class StockController extends Controller
 {
@@ -14,7 +15,7 @@ class StockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index($pageId, Request $request)
     {
         $baseDate = $request->month ?? Carbon::now()->format('Y-m');
 
@@ -33,6 +34,7 @@ class StockController extends Controller
         }
 
         return view('stocks.index', [
+            'pageId' => $pageId,
             'tableTypes' => TableType::all(),
             'baseDate' => $baseDate,
             'stocksTable' => $stocksTable,
@@ -57,7 +59,7 @@ class StockController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($pageId, Request $request)
     {
         Stock::where('accept_date', '>=', Carbon::parse($request->baseDate)->format('Y-m-01'))
             ->where('accept_date', '<', Carbon::parse($request->baseDate)->addMonth(1)->format('Y-m-01'))->delete();
@@ -75,7 +77,7 @@ class StockController extends Controller
             }
         }
 
-        return redirect()->to('/stocks');
+        return redirect()->to('/pages/' . $pageId . '/stocks');
     }
 
     /**
