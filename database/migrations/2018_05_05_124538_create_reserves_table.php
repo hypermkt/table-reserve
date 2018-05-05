@@ -15,11 +15,11 @@ class CreateReservesTable extends Migration
     {
         Schema::create('reserves', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('page_id')->unsined();
+            $table->integer('page_id')->unsigned();
             $table->foreign('page_id')->references('id')->on('pages');
-            $table->integer('customer_id')->unsined();
+            $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->integer('course_id')->unsined();
+            $table->integer('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses');
             $table->dateTime('date');
             $table->timestamps();
