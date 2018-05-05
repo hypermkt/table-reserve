@@ -24,6 +24,9 @@ Route::resource('pages/{pageId}/courses', 'CourseController')->middleware('auth'
 Route::resource('pages/{pageId}/stocks', 'StockController')->middleware('auth');
 Route::resource('pages', 'PageController')->middleware('auth');
 
+Route::get('/{username}/{pageId}', 'ReservationController@index');
+Route::get('/{username}/{pageId}/courses/1', 'ReservationController@show');
+
 Route::prefix('reservations')->group(function () {
     Route::resource('courses', 'Reservation\CourseController')->only(['index', 'show']);
 });
