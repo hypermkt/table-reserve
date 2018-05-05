@@ -21,7 +21,8 @@ class SocialLoginController extends Controller
         $twitterUser = Socialite::driver('Twitter')->user();
 
         $user = $this->findOrCreateUser($twitterUser);
-        $this->findOrCreateRestaurant($user);
+        $restaurant = $this->findOrCreateRestaurant($user);
+        session(['restaurant' => $restaurant]);
 
         Auth::login($user, true);
 
@@ -64,6 +65,7 @@ class SocialLoginController extends Controller
 
     public function logout()
     {
+        session()->flush();
         Auth::logout();
         return redirect()->to('/');
     }
