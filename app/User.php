@@ -42,8 +42,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Stock');
     }
 
-    public function pages()
+    public function restaurants()
     {
-        return $this->hasMany('App\Page');
+        return $this->hasMany('App\Restaurant');
     }
 }

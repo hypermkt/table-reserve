@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TableType extends Model
 {
-    protected $fillable = ['page_id', 'user_id', 'release_state', 'title', 'start_time', 'end_time', 'minimum_capacity', 'max_capacity', 'number_of_sales', 'connectable'];
+    protected $fillable = ['restaurant_id', 'user_id', 'release_state', 'title', 'start_time', 'end_time', 'minimum_capacity', 'max_capacity', 'number_of_sales', 'connectable'];
 
     public function courses()
     {
@@ -23,8 +23,8 @@ class TableType extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function page()
+    public function restaurant()
     {
-        return $this->belongsTo('App\Page');
+        return $this->belongsTo('App\Restaurant');
     }
 }

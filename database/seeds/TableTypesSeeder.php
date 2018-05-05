@@ -12,7 +12,7 @@ class TableTypesSeeder extends Seeder
     public function run()
     {
         DB::table('table_types')->insert([
-            'page_id' => App\Page::first()->id,
+            'restaurant_id' => App\Restaurant::first()->id,
             'user_id' => App\User::first()->id,
             'release_state' => 'public',
             'title' => '小テーブル',
@@ -25,7 +25,7 @@ class TableTypesSeeder extends Seeder
         ]);
 
         DB::table('table_types')->insert([
-            'page_id' => App\Page::first()->id,
+            'restaurant_id' => App\Restaurant::first()->id,
             'user_id' => App\User::first()->id,
             'release_state' => 'public',
             'title' => '中テーブル',

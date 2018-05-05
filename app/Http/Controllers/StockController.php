@@ -15,7 +15,7 @@ class StockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($pageId, Request $request)
+    public function index(Request $request)
     {
         $baseDate = $request->month ?? Carbon::now()->format('Y-m');
 
@@ -34,7 +34,6 @@ class StockController extends Controller
         }
 
         return view('stocks.index', [
-            'pageId' => $pageId,
             'tableTypes' => TableType::all(),
             'baseDate' => $baseDate,
             'stocksTable' => $stocksTable,
@@ -59,7 +58,7 @@ class StockController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($pageId, Request $request)
+    public function store(Request $request)
     {
         Stock::where('accept_date', '>=', Carbon::parse($request->baseDate)->format('Y-m-01'))
             ->where('accept_date', '<', Carbon::parse($request->baseDate)->addMonth(1)->format('Y-m-01'))->delete();
@@ -77,7 +76,7 @@ class StockController extends Controller
             }
         }
 
-        return redirect()->to('/pages/' . $pageId . '/stocks');
+        return redirect()->to('/stocks');
     }
 
     /**

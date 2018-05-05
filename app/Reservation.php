@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
-    public function page()
+    public function restaurant()
     {
-        return $this->belongsTo('App\Page');
+        return $this->belongsTo('App\Restaurant');
     }
 
     public function customer()

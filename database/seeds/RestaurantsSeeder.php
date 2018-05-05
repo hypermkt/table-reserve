@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PagesSeeder extends Seeder
+class RestaurantsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class PagesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('pages')->insert([
+        DB::table('restaurants')->insert([
             'user_id' => App\User::first()->id,
             'title' => 'hoge',
             'description' => 'hoge',
