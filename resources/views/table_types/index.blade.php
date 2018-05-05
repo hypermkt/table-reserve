@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<a href="/pages/{{ $pageId }}/table_types/create">席タイプを登録する</a>
+<a href="/table_types/create">席タイプを登録する</a>
 
 <table border="1">
     <tr>
@@ -28,10 +28,10 @@
         <td>{{ $tableType->number_of_sales }}</td>
         <td>{{ $tableType->connectable }}</td>
         <td>
-            <a href="/pages/{{ $pageId }}/table_types/{{ $tableType->id }}">詳細</a>
-            <a href="/pages/{{ $pageId }}/table_types/{{ $tableType->id }}/edit">編集</a>
+            <a href="/table_types/{{ $tableType->id }}">詳細</a>
+            <a href="/table_types/{{ $tableType->id }}/edit">編集</a>
             @component('components.btn-del')
-                @slot('table', 'pages/' . $pageId . '/table_types')
+                @slot('table', '/table_types')
                 @slot('id', $tableType->id)
             @endcomponent
         </td>
@@ -39,5 +39,5 @@
 @endforeach
 </table>
 
-<a href="/pages/{{ $pageId }}">ページに戻る</a>
+<a href="/">トップページに戻る</a>
 @endsection

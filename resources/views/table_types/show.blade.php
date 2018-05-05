@@ -41,6 +41,6 @@
     </tr>
 </table>
 
-<a href="/pages/{{ $pageId }}/table_types">戻る</a>
+<a href="/table_types">戻る</a>
 
 @endsection

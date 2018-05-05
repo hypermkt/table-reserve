@@ -14,10 +14,9 @@ class TableTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($pageId)
+    public function index()
     {
         return view('table_types.index', [
-            'pageId' => $pageId,
             'tableTypes' => TableType::all()
         ]);
     }
@@ -27,11 +26,9 @@ class TableTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($pageId)
+    public function create()
     {
-        return view('table_types.create', [
-            'pageId' => $pageId,
-        ]);
+        return view('table_types.create');
     }
 
     /**
@@ -40,10 +37,10 @@ class TableTypeController extends Controller
      * @param  TableTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TableTypeRequest $request, $pageId)
+    public function store(TableTypeRequest $request)
     {
         TableType::create([
-            'page_id' => $pageId,
+            'restaurant_id' => session('restaurant')->id,
             'user_id' => Auth::id(),
             'release_state' => $request->release_state,
             'title' => $request->title,
@@ -55,7 +52,7 @@ class TableTypeController extends Controller
             'connectable' => $request->connectable,
         ]);
 
-        return redirect()->to('/pages/' . $pageId . '/table_types');
+        return redirect()->to('/table_types');
     }
 
     /**
@@ -64,11 +61,10 @@ class TableTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($pageId, $id)
+    public function show($id)
     {
         return view('table_types.show', [
             'tableType' => TableType::find($id),
-            'pageId' => $pageId,
         ]);
     }
 
@@ -78,11 +74,10 @@ class TableTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($pageId, $id)
+    public function edit($id)
     {
         return view('table_types.edit', [
             'tableType' => TableType::find($id),
-            'pageId' => $pageId,
         ]);
     }
 
@@ -93,7 +88,7 @@ class TableTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TableTypeRequest $request, $pageId, $id)
+    public function update(TableTypeRequest $request, $id)
     {
         $tableType = TableType::find($id);
         $tableType->title = $request->title;
@@ -105,7 +100,7 @@ class TableTypeController extends Controller
         $tableType->connectable = $request->connectable;
         $tableType->save();
 
-        return redirect()->to('/pages/' . $pageId . '/table_types');
+        return redirect()->to('/table_types');
     }
 
     /**
@@ -114,10 +109,10 @@ class TableTypeController extends Controller
      * @param  \App\TableType $tableType
      * @return \Illuminate\Http\Response
      */
-    public function destroy($pageId, TableType $tableType)
+    public function destroy(TableType $tableType)
     {
         $tableType->delete();
 
-        return redirect()->to('/pages/' . $pageId . '/table_types');
+        return redirect()->to('/table_types');
     }
 }
