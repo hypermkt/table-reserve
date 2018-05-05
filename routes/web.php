@@ -27,10 +27,6 @@ Route::resource('pages', 'PageController')->middleware('auth');
 Route::get('/{username}/{pageId}', 'ReservationController@index');
 Route::get('/{username}/{pageId}/courses/1', 'ReservationController@show');
 
-Route::prefix('reservations')->group(function () {
-    Route::resource('courses', 'Reservation\CourseController')->only(['index', 'show']);
-});
-
 Route::get('auth/twitter', 'Auth\SocialLoginController@redirectToProvider');
 Route::get('auth/twitter/callback', 'Auth\SocialLoginController@handleProviderCallback');
 Route::get('auth/twitter/logout', 'Auth\SocialLoginController@logout');
