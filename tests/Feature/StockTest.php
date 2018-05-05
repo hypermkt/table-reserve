@@ -9,22 +9,24 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class StockTest extends TestCase
 {
     protected $page;
-    protected $baseUrl;
 
     public function setUp()
     {
         parent::setUp();
         $user = factory(\App\User::class)->create();
-        $this->page = factory(\App\Restaurant::class)->create([
-            'user_id' => $user->id
+        $restaurant = factory(\App\Restaurant::class)->create([
+            'user_id' => $user->id,
         ]);
-        $this->baseUrl = '/pages/' . $this->page->id . '/stocks';
+        factory(\App\TableType::class)->create([
+            'restaurant_id' => $restaurant->id,
+            'user_id' => $user->id,
+        ]);
         $this->actingAs($user);
     }
 
     public function testIndex()
     {
-        $response = $this->get($this->baseUrl);
+        $response = $this->get('/stocks');
         $response->assertStatus(200);
     }
 
