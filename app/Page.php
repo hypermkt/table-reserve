@@ -17,4 +17,9 @@ class Page extends Model
     {
         return $this->hasMany('App\TableType');
     }
+
+    public function reservations()
+    {
+        return $this->hasMany('App\Reservation');
+    }
 }
