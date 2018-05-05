@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateReservesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('reserves', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('page_id')->unsined();
+            $table->foreign('page_id')->references('id')->on('pages');
+            $table->integer('customer_id')->unsined();
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->integer('course_id')->unsined();
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->dateTime('date');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('reserves');
+    }
+}
