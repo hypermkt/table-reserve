@@ -16,6 +16,7 @@
         <td>{{ $page->release_state }}</td>
         <td>{{ $page->title }}</td>
         <td>
+            <a href="/{{ $page->user->name }}/{{ $page->id }}" target="_blank">予約ページを開く</a>
             <a href="/pages/{{ $page->id }}">詳細</a>
             <a href="/pages/{{ $page->id }}/edit">編集</a>
             @component('components.btn-del')

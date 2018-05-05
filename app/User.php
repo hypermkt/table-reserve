@@ -32,7 +32,7 @@ class User extends Authenticatable
         return $this->hasMany('App\TableType');
     }
 
-    public function course()
+    public function courses()
     {
         return $this->hasMany('App\Course');
     }
