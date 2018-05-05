@@ -16,10 +16,9 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($pageId)
+    public function index()
     {
         return view('courses.index', [
-            'pageId' => $pageId,
             'courses' => Course::all()
         ]);
     }
@@ -29,10 +28,9 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($pageId)
+    public function create()
     {
         return view('courses.create', [
-            'pageId' => $pageId,
             'tableTypes' => TableType::all(),
         ]);
     }
@@ -43,7 +41,7 @@ class CourseController extends Controller
      * @param  CourseRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CourseRequest $request, $pageId)
+    public function store(CourseRequest $request)
     {
         $course = Course::create([
             'user_id' => Auth::id(),
@@ -56,7 +54,7 @@ class CourseController extends Controller
 
         $course->tableTypes()->attach($request->table_types);
 
-        return redirect()->to('/pages/' . $pageId . '/courses');
+        return redirect()->to('/courses');
     }
 
     /**
@@ -65,10 +63,9 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($pageId, $id)
+    public function show($id)
     {
         return view('courses.show', [
-            'pageId' => $pageId,
             'course' => Course::find($id)
         ]);
     }
@@ -79,10 +76,9 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($pageId, $id)
+    public function edit($id)
     {
         return view('courses.edit', [
-            'pageId' => $pageId,
             'course' => Course::find($id),
             'tableTypes' => TableType::all()
         ]);
@@ -95,7 +91,7 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CourseRequest $request, $pageId, $id)
+    public function update(CourseRequest $request, $id)
     {
         $course = Course::find($id);
         $course->release_state = $request->release_state;
@@ -107,7 +103,7 @@ class CourseController extends Controller
 
         $course->tableTypes()->sync($request->table_types);
 
-        return redirect()->to('/pages/' . $pageId . '/courses');
+        return redirect()->to('/courses');
     }
 
     /**
@@ -116,11 +112,11 @@ class CourseController extends Controller
      * @param  \App\Course $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy($pageId, Course $course)
+    public function destroy(Course $course)
     {
         $course->tableTypes()->detach();
         $course->delete();
 
-        return redirect()->to('/pages/' . $pageId . '/courses');
+        return redirect()->to('/courses');
     }
 }
