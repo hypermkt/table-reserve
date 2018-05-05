@@ -20,7 +20,9 @@ class ReservationController extends Controller
             ->get();
 
         return view('reservations.index', [
-            'courses' => $courses
+            'courses' => $courses,
+            'username' => $username,
+            'pageId' => $pageId,
         ]);
     }
 

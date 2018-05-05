@@ -7,8 +7,7 @@
         <tr>
             <td>{{ $course->title }}</td>
             <td>
-                <button>予約する</button>
-                <button>コース詳細</button>
+                <a href="/{{ $username }}/{{ $pageId }}/courses/{{ $course->id }}">予約する</a>
             </td>
         </tr>
         @endforeach
