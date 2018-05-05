@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Restaurant extends Model
 {
     protected $fillable = ['user_id', 'title', 'description', 'release_state'];
 

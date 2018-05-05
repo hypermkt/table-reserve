@@ -16,7 +16,7 @@ class CourseTest extends TestCase
     {
         parent::setUp();
         $user = factory(\App\User::class)->create();
-        $this->page = factory(\App\Page::class)->create([
+        $this->page = factory(\App\Restaurant::class)->create([
             'user_id' => $user->id
         ]);
         $this->tableType = factory(\App\TableType::class)->create([

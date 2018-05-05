@@ -16,7 +16,7 @@ class TableTypeTest extends TestCase
         // refs: https://readouble.com/laravel/5.6/ja/testing.html
         parent::setUp();
         $user = factory(\App\User::class)->create();
-        $this->page = factory(\App\Page::class)->create([
+        $this->page = factory(\App\Restaurant::class)->create([
             'user_id' => $user->id
         ]);
         $this->actingAs($user);

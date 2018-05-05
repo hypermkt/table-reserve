@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PageRequest;
 use Illuminate\Http\Request;
-use App\Page;
+use App\Restaurant;
 use Auth;
 
 class PageController extends Controller
@@ -16,7 +16,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('pages.index', ['pages' => Page::all()]);
+        return view('pages.index', ['pages' => Restaurant::all()]);
     }
 
     /**
@@ -37,7 +37,7 @@ class PageController extends Controller
      */
     public function store(PageRequest $request)
     {
-        Page::create([
+        Restaurant::create([
             'user_id' => Auth::id(),
             'title' => $request->title,
             'description' => $request->description,
@@ -55,7 +55,7 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        return view('pages.show', ['page' => Page::find($id)]);
+        return view('pages.show', ['page' => Restaurant::find($id)]);
     }
 
     /**
@@ -66,7 +66,7 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.edit', ['page' => Page::find($id)]);
+        return view('pages.edit', ['page' => Restaurant::find($id)]);
     }
 
     /**
@@ -78,7 +78,7 @@ class PageController extends Controller
      */
     public function update(PageRequest $request, $id)
     {
-        $page = Page::find($id);
+        $page = Restaurant::find($id);
         $page->title = $request->title;
         $page->description = $request->description;
         $page->release_state = $request->release_state;
@@ -95,7 +95,7 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        $page = Page::find($id);
+        $page = Restaurant::find($id);
         $page->delete();
 
         return redirect()->to('/pages');

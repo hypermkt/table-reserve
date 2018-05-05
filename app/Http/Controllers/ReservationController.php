@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Page;
+use App\Restaurant;
 
 class ReservationController extends Controller
 {
