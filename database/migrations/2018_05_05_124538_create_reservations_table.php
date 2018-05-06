@@ -22,7 +22,7 @@ class CreateReservationsTable extends Migration
             $table->integer('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses');
             $table->integer('number_of_people');
-            $table->dateTime('date');
+            $table->dateTime('datetime');
             $table->timestamps();
         });
     }

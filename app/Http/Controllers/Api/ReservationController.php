@@ -17,7 +17,8 @@ class ReservationController extends Controller
             'restaurant_id' => $request->restaurant_id,
             'customer_id' => $customer->id,
             'course_id' => $request->course_id,
-            'date' => $request->date,
+            'number_of_people' => $request->number_of_people,
+            'datetime' => $request->datetime,
         ]);
 
         return response()->json([
