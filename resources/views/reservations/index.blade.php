@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <reservation-component username="{{ $username }}"></reservation-component>
+    <reservation-component restaurant-id="{{ $restaurant->id }}" username="{{ $username }}"></reservation-component>
 @endsection
