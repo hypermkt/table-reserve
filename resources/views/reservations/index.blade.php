@@ -1,17 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>コース一覧</h2>
-    <table>
-        @foreach ($courses as $course)
-        <tr>
-            <td>{{ $course->title }}</td>
-            <td>
-                <a href="/{{ $username }}/{{ $course->id }}">予約する</a>
-            </td>
-        </tr>
-        @endforeach
-    </table>
-
-    <reservation-component></reservation-component>
+    <reservation-component restaurant-id="{{ $restaurant->id }}" username="{{ $username }}"></reservation-component>
 @endsection

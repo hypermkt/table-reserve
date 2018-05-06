@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "element-ui": "^2.3.7",
+        "moment": "^2.22.1",
         "v-calendar": "^0.9.7"
     }
 }

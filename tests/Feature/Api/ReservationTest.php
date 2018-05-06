@@ -26,7 +26,7 @@ class ReservationTest extends TestCase
         $this->course->tableTypes()->attach([$tableType->id]);
     }
 
-    public function testIndex()
+    public function testStore()
     {
         $response = $this->post('/api/reservations', [
             'name' => 'hpge',
@@ -34,7 +34,8 @@ class ReservationTest extends TestCase
             'tel' => '03-1234-5678',
             'restaurant_id' => $this->restaurant->id,
             'course_id' => $this->course->id,
-            'date' => '2018-05-01 12:00',
+            'number_of_people' => 2,
+            'datetime' => '2018-05-01 12:00',
         ]);
 
         $response->assertStatus(201);

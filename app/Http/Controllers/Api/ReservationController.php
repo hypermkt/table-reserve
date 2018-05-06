@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Customer;
 use App\Reservation;
+use Illuminate\Support\Facades\Log;
 
 class ReservationController extends Controller
 {
@@ -17,7 +18,8 @@ class ReservationController extends Controller
             'restaurant_id' => $request->restaurant_id,
             'customer_id' => $customer->id,
             'course_id' => $request->course_id,
-            'date' => $request->date,
+            'number_of_people' => $request->number_of_people,
+            'datetime' => $request->datetime,
         ]);
 
         return response()->json([
