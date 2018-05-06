@@ -17,7 +17,7 @@ class ReservationController extends Controller
             ->where('courses.release_state', 'public')
             ->select('courses.*')
             ->get();
-var_dump($courses);
+
         return view('reservations.index', [
             'courses' => $courses,
             'username' => $username,
