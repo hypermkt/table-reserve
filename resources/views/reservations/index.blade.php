@@ -13,4 +13,5 @@
         @endforeach
     </table>
 
+    <reservation-component></reservation-component>
 @endsection
