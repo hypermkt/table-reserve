@@ -29,5 +29,5 @@ Route::get('auth/twitter/callback', 'Auth\SocialLoginController@handleProviderCa
 Route::get('auth/twitter/logout', 'Auth\SocialLoginController@logout');
 
 Route::get('/{username}', 'ReservationController@index');
-Route::get('/{username}/courses/1', 'ReservationController@show');
+Route::get('/{username}/{courseId}', 'ReservationController@show');
 

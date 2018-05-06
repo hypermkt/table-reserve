@@ -24,7 +24,7 @@ class ReservationController extends Controller
         ]);
     }
 
-    public function show(Request $id)
+    public function show($username, $courseId)
     {
         return view('reservations.show');
     }
