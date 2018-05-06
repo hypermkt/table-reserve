@@ -28,6 +28,6 @@ Route::get('auth/twitter', 'Auth\SocialLoginController@redirectToProvider');
 Route::get('auth/twitter/callback', 'Auth\SocialLoginController@handleProviderCallback');
 Route::get('auth/twitter/logout', 'Auth\SocialLoginController@logout');
 
-Route::get('/{username}/{pageId}', 'ReservationController@index');
-Route::get('/{username}/{pageId}/courses/1', 'ReservationController@show');
+Route::get('/{username}', 'ReservationController@index');
+Route::get('/{username}/courses/1', 'ReservationController@show');
 

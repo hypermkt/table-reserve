@@ -4,25 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Restaurant;
 
 class ReservationController extends Controller
 {
-    public function index($username, $pageId)
+    public function index($username)
     {
-        $courses = DB::table('pages')
-            ->join('users', 'pages.user_id', '=', 'users.id')
+        $courses = DB::table('restaurants')
+            ->join('users', 'restaurants.user_id', '=', 'users.id')
             ->join('courses', 'users.id', '=', 'courses.user_id')
-            ->where('pages.id', $pageId)
-            ->where('pages.release_state', 'public')
+            ->where('users.name', $username)
+            ->where('restaurants.release_state', 'public')
             ->where('courses.release_state', 'public')
             ->select('courses.*')
             ->get();
-
+var_dump($courses);
         return view('reservations.index', [
             'courses' => $courses,
             'username' => $username,
-            'pageId' => $pageId,
         ]);
     }
 
