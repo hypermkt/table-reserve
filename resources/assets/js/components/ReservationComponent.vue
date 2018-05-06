@@ -1,54 +1,59 @@
 <template>
     <div>
-        <div>
-            <ul>
-                <li v-for="item in this.courses">
-                    <el-radio v-model="course" :label="item.id">{{ item.title }}</el-radio>
-                </li>
-            </ul>
+        <div v-if="isReserved">
+            予約完了
         </div>
-        <div>
-            <v-date-picker
-                    mode='single'
-                    v-model='date'
-                    is-inline>
-            </v-date-picker>
-        </div>
+        <div v-else>
+            <div>
+                <ul>
+                    <li v-for="item in this.courses">
+                        <el-radio v-model="course_id" :label="item.id">{{ item.title }}</el-radio>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <v-date-picker
+                        mode='single'
+                        v-model='date'
+                        is-inline>
+                </v-date-picker>
+            </div>
 
-        <el-select v-model="number_of_people" placeholder="Select">
-            <el-option
-                    v-for="item in this.number_of_people_options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-            </el-option>
-        </el-select>
+            <el-select v-model="number_of_people" placeholder="Select">
+                <el-option
+                        v-for="item in this.number_of_people_options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                </el-option>
+            </el-select>
 
-        <div>
-            <el-button
-                v-for="item in this.times"
-                :key="item.label"
-                @click="time=item.label">{{ item.label }}</el-button>
-        </div>
+            <div>
+                <el-button
+                        v-for="item in this.times"
+                        :key="item.label"
+                        @click="time=item.label">{{ item.label }}</el-button>
+            </div>
 
-        <div>
-            <el-form ref="form" :model="form" label-width="120px">
-                <el-form-item label="お名前">
-                    <el-input v-model="form.name"></el-input>
-                </el-form-item>
+            <div>
+                <el-form ref="form" :model="form" label-width="120px">
+                    <el-form-item label="お名前">
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
 
-                <el-form-item label="メールアドレス">
-                    <el-input v-model="form.email"></el-input>
-                </el-form-item>
+                    <el-form-item label="メールアドレス">
+                        <el-input v-model="form.email"></el-input>
+                    </el-form-item>
 
-                <el-form-item label="電話番号">
-                    <el-input v-model="form.tel"></el-input>
-                </el-form-item>
+                    <el-form-item label="電話番号">
+                        <el-input v-model="form.tel"></el-input>
+                    </el-form-item>
 
-                <el-form-item>
-                    <el-button type="primary" @click="reserve">予約する</el-button>
-                </el-form-item>
-            </el-form>
+                    <el-form-item>
+                        <el-button type="primary" @click="reserve">予約する</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
         </div>
     </div>
 </template>
@@ -56,10 +61,12 @@
 <script>
 import { setupCalendar, Calendar} from 'v-calendar'
 import 'v-calendar/lib/v-calendar.min.css';
+import moment from 'moment';
 
 export default {
     data() {
        return {
+           isReserved: false,
            courses: [],
            number_of_people_options: [
                { label: '1人', value: 1 },
@@ -72,7 +79,7 @@ export default {
                { label: '11:00' },
                { label: '11:30' },
            ],
-           course: '',
+           course_id: null,
            number_of_people: '',
            date: null,
            time: null,
@@ -86,7 +93,7 @@ export default {
     components: {
         'v-calendar': Calendar
     },
-    props: ['username'],
+    props: ['username', 'restaurantId'],
     created() {
         this.fetchCourses();
     },
@@ -100,13 +107,21 @@ export default {
             })
         },
         reserve: function() {
-            console.log("course:" + this.course);
-            console.log("date:" + this.date);
-            console.log("time:" + this.time);
-            console.log("number_of_people:" + this.number_of_people);
-            console.log("form.name:" + this.form.name);
-            console.log("form.email:" + this.form.email);
-            console.log("form.tel:" + this.form.tel);
+            let timeArr = this.time.split(':');
+            let datetime = moment(this.date).hour(timeArr[0]).minute(timeArr[1]).format('YYYY-MM-DD HH:mm');
+            let params = {
+                restaurant_id: this.restaurantId,
+                course_id: this.course_id,
+                datetime: datetime,
+                number_of_people: this.number_of_people,
+                name: this.form.name,
+                email: this.form.email,
+                tel: this.form.tel,
+            };
+            console.table(params);
+            axios.post('/api/reservations', params).then((response) => {
+                this.isReserved = true;
+            })
         }
     }
 }

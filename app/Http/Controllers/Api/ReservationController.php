@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Customer;
 use App\Reservation;
+use Illuminate\Support\Facades\Log;
 
 class ReservationController extends Controller
 {
