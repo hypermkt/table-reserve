@@ -33,10 +33,4 @@ class ReservationTest extends TestCase
         $response = $this->get($this->user->name);
         $response->assertStatus(200);
     }
-
-    public function testShow()
-    {
-        $response = $this->get('/' . $this->user->name . '/' . $this->course->id);
-        $response->assertStatus(200);
-    }
 }
