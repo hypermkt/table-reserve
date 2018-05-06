@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('courses', 'Api\CourseController@index');
+Route::post('reservations', 'Api\ReservationController@store');

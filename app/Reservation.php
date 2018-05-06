@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
+    protected $fillable = ['restaurant_id', 'customer_id', 'course_id', 'date'];
+
     public function restaurant()
     {
         return $this->belongsTo('App\Restaurant');
