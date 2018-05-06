@@ -1,12 +1,10 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Api;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ReservationTest extends TestCase
+class CourseTest extends TestCase
 {
     protected $user;
     protected $course;
@@ -30,7 +28,7 @@ class ReservationTest extends TestCase
 
     public function testIndex()
     {
-        $response = $this->get($this->user->name);
+        $response = $this->get('/api/courses?username=' . $this->user->name);
         $response->assertStatus(200);
     }
 }
