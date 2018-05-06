@@ -23,9 +23,4 @@ class ReservationController extends Controller
             'username' => $username,
         ]);
     }
-
-    public function show($username, $courseId)
-    {
-        return view('reservations.show');
-    }
 }
