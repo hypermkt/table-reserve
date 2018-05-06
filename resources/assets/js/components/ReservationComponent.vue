@@ -1,8 +1,9 @@
 <template>
     <div>
         <ul>
-            <li><el-radio v-model="form.radio" label="1">Option A</el-radio></li>
-            <li><el-radio v-model="form.radio" label="2">Option B</el-radio></li>
+            <li v-for="course in this.courses">
+                <el-radio v-model="form.radio" :label="course.id">{{ course.title }}</el-radio>
+            </li>
         </ul>
 
         <br />
@@ -50,6 +51,7 @@ import 'v-calendar/lib/v-calendar.min.css';
 export default {
     data() {
        return {
+           courses: [],
            selectedDate: null,
            form: {
                name: '',
@@ -81,7 +83,19 @@ export default {
     components: {
         'v-calendar': Calendar
     },
+    props: ['username'],
+    created() {
+        this.fetchCourses();
+    },
     methods: {
+        fetchCourses() {
+            let that = this;
+            axios.get('/api/courses', {params: {
+                username: this.username
+            }}).then(function(response) {
+                that.courses = response.data.courses;
+            })
+        },
         onSubmit: function() {
 
         }
