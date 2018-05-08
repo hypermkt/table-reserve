@@ -2,7 +2,7 @@
 
 @section('content')
 
-<table border="1">
+<table class="table table-bordered bg-white" border="1">
     <tr>
         <th>ID</th>
         <td>{{ $tableType->id }}</td>
@@ -41,6 +41,6 @@
     </tr>
 </table>
 
-<a href="/table_types">戻る</a>
+<a class="btn btn-light" href="/table_types">戻る</a>
 
 @endsection
