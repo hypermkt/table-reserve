@@ -1,37 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-<a href="/courses/create">コースを登録する</a>
+<div class="float-left">
+    <h2>コース</h2>
+</div>
+<div class="float-right">
+    <a class="btn btn-primary" href="/courses/create">＋ 新しいコース</a>
+</div>
+<div class="clearfix"></div>
 
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>公開状態</th>
-        <th>区分</th>
-        <th>メニュー名</th>
-        <th>料金</th>
-        <th>滞在時間(分)</th>
-        <th>Action</th>
-    </tr>
-@foreach ($courses as $course)
-    <tr>
-        <td>{{ $course->id }}</td>
-        <td>{{ $course->release_state }}</td>
-        <td>{{ $course->kind }}</td>
-        <td>{{ $course->title }}</td>
-        <td>{{ $course->price }}</td>
-        <td>{{ $course->duration_minutes }}</td>
-        <td>
-            <a href="/courses/{{ $course->id }}">詳細</a>
-            <a href="/courses/{{ $course->id }}/edit">編集</a>
-            @component('components.btn-del')
-                @slot('table', 'courses')
-                @slot('id', $course->id)
-            @endcomponent
-        </td>
-    </tr>
-@endforeach
-</table>
 
-<a href="/">トップページに戻る</a>
+<div class="mt-3 mb-3 clearfix">
+    @foreach ($courses as $course)
+        <div class="card float-left mr-3 mb-3" style="width: 18rem;">
+            <div class="card-body">
+                <h2 class="card-title">
+                    <a href="/courses/{{ $course->id }}">{{ $course->title }}</a>
+                </h2>
+                <p class="card-text">
+                    @component('components.btn-action')
+                        @slot('table', '/courses')
+                        @slot('id', $course->id)
+                    @endcomponent
+                </p>
+            </div>
+        </div>
+    @endforeach
+</div>
 @endsection
