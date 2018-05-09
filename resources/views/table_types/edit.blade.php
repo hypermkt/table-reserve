@@ -13,8 +13,9 @@
                 <tr>
                     <th>公開状態&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
-                        公開<input type="radio" name="release_state" value="public" @if (($tableType->release_state) == 'public') checked @endif>
-                        非公開<input type="radio" name="release_state" value="private" @if ($tableType->release_state == 'private') checked @endif>
+                        <?php $releaseState = old('release_state') ?? $tableType->release_state; ?>
+                        公開<input type="radio" name="release_state" value="public" @if ($releaseState == 'public') checked @endif>
+                        非公開<input type="radio" name="release_state" value="private" @if ($releaseState == 'private') checked @endif>
                     </td>
                 </tr>
                 <tr>
@@ -33,15 +34,17 @@
                 <tr>
                     <th>定員数&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
+                        <?php $minimumCapacity = old('minimum_capacity') ?? $tableType->minimum_capacity; ?>
                         <select name="minimum_capacity">
                             @for ($i = 1; $i < 10; $i++)
-                                <option @if ($tableType->minimum_capacity == $i) selected @endif>{{ $i }}</option>
+                                <option @if ($minimumCapacity == $i) selected @endif>{{ $i }}</option>
                             @endfor
                         </select>
                         〜
+                        <?php $maxCapacity = old('max_capacity') ?? $tableType->max_capacity; ?>
                         <select name="max_capacity">
                             @for ($i = 1; $i < 10; $i++)
-                                <option @if ($tableType->max_capacity == $i) selected @endif>{{ $i }}</option>
+                                <option @if ($maxCapacity == $i) selected @endif>{{ $i }}</option>
                             @endfor
                         </select>
                         名
@@ -54,8 +57,9 @@
                 <tr>
                     <th>コネクト&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
-                        可<input type="radio" name="connectable" value="1" @if ($tableType->connectable == '1') checked @endif>
-                        不可<input type="radio" name="connectable" value="0" @if ($tableType->connectable == '0') checked @endif>
+                        <?php $connectable = old('connectable') ?? $tableType->connectable; ?>
+                        可<input type="radio" name="connectable" value="1" @if ($connectable == '1') checked @endif>
+                        不可<input type="radio" name="connectable" value="0" @if ($connectable == '0') checked @endif>
                     </td>
                 </tr>
             </table>
