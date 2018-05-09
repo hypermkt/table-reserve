@@ -2,6 +2,9 @@
 
 @section('content')
 
+@component('components.alert-success')
+@endcomponent
+
 <div class="float-left">
     <h2>席タイプ</h2>
 </div>
