@@ -30,12 +30,21 @@
                     <td><input class="form-control" type="text" name="end_time"></td>
                 </tr>
                 <tr>
-                    <th>最低定員数&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="minimum_capacity"></td>
-                </tr>
-                <tr>
-                    <th>最大定員数&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="max_capacity"></td>
+                    <th>定員数&nbsp;<span class="badge badge-danger">必須</span></th>
+                    <td>
+                        <select name="minimum_capacity">
+                        @for ($i = 1; $i < 10; $i++)
+                            <option>{{ $i }}</option>
+                        @endfor
+                        </select>
+                        〜
+                        <select name="max_capacity">
+                        @for ($i = 1; $i < 10; $i++)
+                            <option>{{ $i }}</option>
+                        @endfor
+                        </select>
+                        名
+                    </td>
                 </tr>
                 <tr>
                     <th>販売可能数&nbsp;<span class="badge badge-danger">必須</span></th>

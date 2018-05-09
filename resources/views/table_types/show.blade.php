@@ -24,12 +24,13 @@
         <td>{{ $tableType->end_time }}</td>
     </tr>
     <tr>
-        <th>最低定員数</th>
-        <td>{{ $tableType->minimum_capacity }}</td>
-    </tr>
-    <tr>
-        <th>最大定員数</th>
-        <td>{{ $tableType->max_capacity }}</td>
+        <th>定員数</th>
+        <td>
+            {{ $tableType->minimum_capacity }}
+            〜
+            {{ $tableType->max_capacity }}
+            名
+        </td>
     </tr>
     <tr>
         <th>販売可能数</th>
