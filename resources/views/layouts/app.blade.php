@@ -4,7 +4,6 @@
     <title>@yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="/css/app.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="/css/all.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 
