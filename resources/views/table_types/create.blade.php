@@ -10,39 +10,39 @@
             {{ csrf_field() }}
             <table class="table table-bordered bg-white" border="1">
                 <tr>
-                    <th>公開状態</th>
+                    <th>公開状態&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
                         公開<input type="radio" name="release_state" value="public">
                         非公開<input type="radio" name="release_state" value="private">
                     </td>
                 </tr>
                 <tr>
-                    <th>席名称</th>
+                    <th>席名称&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td><input class="form-control" type="text" name="title"></td>
                 </tr>
                 <tr>
-                    <th>利用開始時間</th>
+                    <th>利用開始時間&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td><input class="form-control" type="text" name="start_time"></td>
                 </tr>
                 </tr>
                 <tr>
-                    <th>利用終了時間</th>
+                    <th>利用終了時間&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td><input class="form-control" type="text" name="end_time"></td>
                 </tr>
                 <tr>
-                    <th>最低定員数</th>
+                    <th>最低定員数&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td><input class="form-control" type="text" name="minimum_capacity"></td>
                 </tr>
                 <tr>
-                    <th>最大定員数</th>
+                    <th>最大定員数&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td><input class="form-control" type="text" name="max_capacity"></td>
                 </tr>
                 <tr>
-                    <th>販売可能数</th>
+                    <th>販売可能数&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td><input class="form-control" type="text" name="number_of_sales"></td>
                 </tr>
                 <tr>
-                    <th>コネクト</th>
+                    <th>コネクト&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
                         可<input type="radio" name="connectable" value="1">
                         不可<input type="radio" name="connectable" value="0">
