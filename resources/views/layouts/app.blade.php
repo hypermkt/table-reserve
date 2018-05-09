@@ -14,7 +14,7 @@
             <a class="p-2 text-dark" href="/table_types">席タイプ設定</a>
             <a class="p-2 text-dark" href="/courses">コース設定</a>
             <a class="p-2 text-dark" href="/stocks">在庫管理</a>
-            {{--<a href="/{{ Auth::user()->name }}" target="_blank">予約ページを開く</a>--}}
+            <a class="btn btn-outline-success" href="/{{ Auth::user()->name }}" target="_blank">予約ページを開く</a>
             <a class="btn btn-outline-primary" href="/auth/twitter/logout">Logout</a>
         @else
             <a class="btn btn-outline-primary" href="/auth/twitter">Twitter Login</a>
