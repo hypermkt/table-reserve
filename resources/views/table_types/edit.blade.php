@@ -31,12 +31,21 @@
                     <td><input class="form-control" type="text" name="end_time" value="{{ \Carbon\Carbon::parse($tableType->end_time)->format('H:i') }}"></td>
                 </tr>
                 <tr>
-                    <th>最低定員数&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="minimum_capacity" value="{{ $tableType->minimum_capacity }}"></td>
-                </tr>
-                <tr>
-                    <th>最大定員数&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="max_capacity" value="{{ $tableType->max_capacity }}"></td>
+                    <th>定員数&nbsp;<span class="badge badge-danger">必須</span></th>
+                    <td>
+                        <select name="minimum_capacity">
+                            @for ($i = 1; $i < 10; $i++)
+                                <option @if ($tableType->minimum_capacity == $i) selected @endif>{{ $i }}</option>
+                            @endfor
+                        </select>
+                        〜
+                        <select name="max_capacity">
+                            @for ($i = 1; $i < 10; $i++)
+                                <option @if ($tableType->max_capacity == $i) selected @endif>{{ $i }}</option>
+                            @endfor
+                        </select>
+                        名
+                    </td>
                 </tr>
                 <tr>
                     <th>販売可能数&nbsp;<span class="badge badge-danger">必須</span></th>
