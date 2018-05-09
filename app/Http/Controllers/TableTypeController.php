@@ -52,7 +52,7 @@ class TableTypeController extends Controller
             'connectable' => $request->connectable,
         ]);
 
-        return redirect()->to('/table_types');
+        return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->title . '」を登録しました' );
     }
 
     /**
@@ -100,7 +100,7 @@ class TableTypeController extends Controller
         $tableType->connectable = $request->connectable;
         $tableType->save();
 
-        return redirect()->to('/table_types');
+        return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->title . '」を更新しました' );
     }
 
     /**
@@ -111,8 +111,9 @@ class TableTypeController extends Controller
      */
     public function destroy(TableType $tableType)
     {
+        $tableName = $tableType->title;
         $tableType->delete();
 
-        return redirect()->to('/table_types');
+        return redirect()->to('/table_types')->with('success', '席タイプ「' . $tableName. '」を削除しました' );
     }
 }
