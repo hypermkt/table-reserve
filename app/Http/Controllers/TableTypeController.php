@@ -91,6 +91,7 @@ class TableTypeController extends Controller
     public function update(TableTypeRequest $request, $id)
     {
         $tableType = TableType::find($id);
+        $tableType->release_state = $request->release_state;
         $tableType->title = $request->title;
         $tableType->start_time = $request->start_time;
         $tableType->end_time = $request->end_time;
