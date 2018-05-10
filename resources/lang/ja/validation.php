@@ -116,6 +116,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'release_state' => '公開状態',
+        'number_of_sales' => '販売可能数',
+        'connectable' => 'コネクト設定',
+
+        'price' => '料金',
+        'duration_minutes' => '滞在時間(分)',
+    ],
 
 ];
