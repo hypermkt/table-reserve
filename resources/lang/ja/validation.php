@@ -118,6 +118,9 @@ return [
 
     'attributes' => [
         'release_state' => '公開状態',
+        'table_type_name' => '席名称',
+        'available_start_time' => '利用開始時間',
+        'available_end_time' => '利用終了時間',
         'number_of_sales' => '販売可能数',
         'connectable' => 'コネクト設定',
 
