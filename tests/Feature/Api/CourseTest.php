@@ -2,10 +2,13 @@
 
 namespace Tests\Feature\Api;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class CourseTest extends TestCase
 {
+    use DatabaseMigrations;
+
     protected $user;
     protected $course;
 
