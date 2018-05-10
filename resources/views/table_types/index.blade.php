@@ -17,7 +17,16 @@
     @foreach ($tableTypes as $tableType)
         <div class="card float-left mr-3 mb-3" style="width: 18rem;">
             <div class="card-body">
+                @if ($tableType->release_state == 'public')
+                    <span class="badge badge-danger">公開中</span>
+                @else
+                    <span class="badge badge-secondary">非公開</span>
+                @endif
+                @if ($tableType->connectable)
+                    <span class="badge badge-warning">コネクト可</span>
+                @endif
                 <h2 class="card-title">
+
                     <a href="/table_types/{{ $tableType->id }}">{{ $tableType->title }}</a>
                 </h2>
                 <p class="card-text">
