@@ -27,7 +27,7 @@
                 @endif
                 <h2 class="card-title">
 
-                    <a href="/table_types/{{ $tableType->id }}">{{ $tableType->title }}</a>
+                    <a href="/table_types/{{ $tableType->id }}">{{ $tableType->table_type_name }}</a>
                 </h2>
                 <p class="card-text">
                     @component('components.btn-action')

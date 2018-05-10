@@ -13,15 +13,15 @@
     </tr>
     <tr>
         <th>席名称</th>
-        <td>{{ $tableType->title }}</td>
+        <td>{{ $tableType->table_type_name }}</td>
     </tr>
     <tr>
         <th>利用開始時間</th>
-        <td>{{ $tableType->start_time }}</td>
+        <td>{{ $tableType->available_start_time }}</td>
     </tr>
     <tr>
         <th>利用終了時間</th>
-        <td>{{ $tableType->end_time }}</td>
+        <td>{{ $tableType->available_end_time }}</td>
     </tr>
     <tr>
         <th>定員数</th>

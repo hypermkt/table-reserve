@@ -20,16 +20,16 @@
                 </tr>
                 <tr>
                     <th>席名称&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="title" value="{{ old('title') ?: $tableType->title }}"></td>
+                    <td><input class="form-control" type="text" name="table_type_name" value="{{ old('table_type_name') ?: $tableType->table_type_name }}"></td>
                 </tr>
 
                 <tr>
                     <th>席の利用時間&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
-                        <?php $startTime = old('start_time') ?? \Carbon\Carbon::parse($tableType->start_time)->format('H:i')?>
-                        <?php $endTime = old('end_time') ?? \Carbon\Carbon::parse($tableType->end_time)->format('H:i')?>
+                        <?php $startTime = old('available_start_time') ?? \Carbon\Carbon::parse($tableType->available_start_time)->format('H:i')?>
+                        <?php $endTime = old('available_end_time') ?? \Carbon\Carbon::parse($tableType->available_end_time)->format('H:i')?>
                         利用開始時間
-                        <select name="start_time">
+                        <select name="available_start_time">
                             @for ($i = 0; $i < 24; $i++)
                                 @for ($j = 0; $j < 2; $j++)
                                     @if ($j == 0)
@@ -44,7 +44,7 @@
                         </select>
                         〜
                         利用終了時間
-                        <select name="end_time">
+                        <select name="available_end_time">
                             @for ($i = 0; $i < 24; $i++)
                                 @for ($j = 0; $j < 2; $j++)
                                     @if ($j == 0)

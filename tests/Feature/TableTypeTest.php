@@ -39,9 +39,9 @@ class TableTypeTest extends TestCase
     {
         $response = $this->post('/table_types', [
             'release_state' => 'public',
-            'title' => 'hoge',
-            'start_time' => '10:00',
-            'end_time' => '19:00',
+            'table_type_name' => 'hoge',
+            'available_start_time' => '10:00',
+            'available_end_time' => '19:00',
             'minimum_capacity' => 1,
             'max_capacity' => 4,
             'number_of_sales' => 3,
