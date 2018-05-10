@@ -21,13 +21,38 @@
                     <td><input class="form-control" type="text" name="title" value="{{ old('title') }}"></td>
                 </tr>
                 <tr>
-                    <th>利用開始時間&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="start_time" value="{{ old('start_time') }}"></td>
-                </tr>
-                </tr>
-                <tr>
-                    <th>利用終了時間&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="end_time" value="{{ old('end_time') }}"></td>
+                    <th>席の利用時間&nbsp;<span class="badge badge-danger">必須</span></th>
+                    <td>
+                        利用開始時間
+                        <select name="start_time">
+                        @for ($i = 0; $i < 24; $i++)
+                            @for ($j = 0; $j < 2; $j++)
+                                @if ($j == 0)
+                                    <?php $value = sprintf("%02d", $i). ":00";?>
+                                    <option @if (old('start_time') == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                @else
+                                    <?php $value = sprintf("%02d", $i). ":30";?>
+                                    <option @if (old('start_time') == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                @endif
+                            @endfor
+                        @endfor
+                        </select>
+                        〜
+                        利用終了時間
+                        <select name="end_time">
+                        @for ($i = 0; $i < 24; $i++)
+                            @for ($j = 0; $j < 2; $j++)
+                                @if ($j == 0)
+                                    <?php $value = sprintf("%02d", $i). ":00";?>
+                                    <option @if (old('end_time') == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                @else
+                                    <?php $value = sprintf("%02d", $i). ":30";?>
+                                    <option @if (old('end_time') == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                @endif
+                            @endfor
+                        @endfor
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <th>定員数&nbsp;<span class="badge badge-danger">必須</span></th>

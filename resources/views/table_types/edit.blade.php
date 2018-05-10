@@ -22,15 +22,44 @@
                     <th>席名称&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td><input class="form-control" type="text" name="title" value="{{ old('title') ?: $tableType->title }}"></td>
                 </tr>
+
                 <tr>
-                    <th>利用開始時間&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="start_time" value="{{ old('start_time') ?? \Carbon\Carbon::parse($tableType->start_time)->format('H:i') }}"></td>
+                    <th>席の利用時間&nbsp;<span class="badge badge-danger">必須</span></th>
+                    <td>
+                        <?php $startTime = old('start_time') ?? \Carbon\Carbon::parse($tableType->start_time)->format('H:i')?>
+                        <?php $endTime = old('end_time') ?? \Carbon\Carbon::parse($tableType->end_time)->format('H:i')?>
+                        利用開始時間
+                        <select name="start_time">
+                            @for ($i = 0; $i < 24; $i++)
+                                @for ($j = 0; $j < 2; $j++)
+                                    @if ($j == 0)
+                                        <?php $value = sprintf("%02d", $i). ":00";?>
+                                        <option @if ($startTime == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                    @else
+                                        <?php $value = sprintf("%02d", $i). ":30";?>
+                                        <option @if ($startTime == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                    @endif
+                                @endfor
+                            @endfor
+                        </select>
+                        〜
+                        利用終了時間
+                        <select name="end_time">
+                            @for ($i = 0; $i < 24; $i++)
+                                @for ($j = 0; $j < 2; $j++)
+                                    @if ($j == 0)
+                                        <?php $value = sprintf("%02d", $i). ":00";?>
+                                        <option @if ($endTime == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                    @else
+                                        <?php $value = sprintf("%02d", $i). ":30";?>
+                                        <option @if ($endTime == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                    @endif
+                                @endfor
+                            @endfor
+                        </select>
+                    </td>
                 </tr>
-                </tr>
-                <tr>
-                    <th>利用終了時間&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="end_time" value="{{  old('end_time') ?? \Carbon\Carbon::parse($tableType->end_time)->format('H:i') }}"></td>
-                </tr>
+
                 <tr>
                     <th>定員数&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
