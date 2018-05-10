@@ -2,10 +2,13 @@
 
 namespace Tests\Feature\Api;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class ReservationTest extends TestCase
 {
+    use DatabaseMigrations;
+
     protected $course;
     protected $restaurant;
 
