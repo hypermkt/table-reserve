@@ -13,35 +13,67 @@
                 <tr>
                     <th>公開状態&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
-                        公開<input type="radio" name="release_state" value="public" @if ($tableType->release_state == 'public') checked @endif>
-                        非公開<input type="radio" name="release_state" value="private" @if ($tableType->release_state == 'private') checked @endif>
+                        <?php $releaseState = old('release_state') ?? $tableType->release_state; ?>
+                        <label>公開<input type="radio" name="release_state" value="public" @if ($releaseState == 'public') checked @endif></label>
+                        <label>非公開<input type="radio" name="release_state" value="private" @if ($releaseState == 'private') checked @endif></label>
                     </td>
                 </tr>
                 <tr>
                     <th>席名称&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="title" value="{{ $tableType->title }}"></td>
+                    <td><input class="form-control" type="text" name="title" value="{{ old('title') ?: $tableType->title }}"></td>
                 </tr>
+
                 <tr>
-                    <th>利用開始時間&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="start_time" value="{{ \Carbon\Carbon::parse($tableType->start_time)->format('H:i') }}"></td>
-                </tr>
-                </tr>
-                <tr>
-                    <th>利用終了時間&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="end_time" value="{{ \Carbon\Carbon::parse($tableType->end_time)->format('H:i') }}"></td>
-                </tr>
-                <tr>
-                    <th>定員数&nbsp;<span class="badge badge-danger">必須</span></th>
+                    <th>席の利用時間&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
-                        <select name="minimum_capacity">
-                            @for ($i = 1; $i < 10; $i++)
-                                <option @if ($tableType->minimum_capacity == $i) selected @endif>{{ $i }}</option>
+                        <?php $startTime = old('start_time') ?? \Carbon\Carbon::parse($tableType->start_time)->format('H:i')?>
+                        <?php $endTime = old('end_time') ?? \Carbon\Carbon::parse($tableType->end_time)->format('H:i')?>
+                        利用開始時間
+                        <select name="start_time">
+                            @for ($i = 0; $i < 24; $i++)
+                                @for ($j = 0; $j < 2; $j++)
+                                    @if ($j == 0)
+                                        <?php $value = sprintf("%02d", $i). ":00";?>
+                                        <option @if ($startTime == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                    @else
+                                        <?php $value = sprintf("%02d", $i). ":30";?>
+                                        <option @if ($startTime == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                    @endif
+                                @endfor
                             @endfor
                         </select>
                         〜
+                        利用終了時間
+                        <select name="end_time">
+                            @for ($i = 0; $i < 24; $i++)
+                                @for ($j = 0; $j < 2; $j++)
+                                    @if ($j == 0)
+                                        <?php $value = sprintf("%02d", $i). ":00";?>
+                                        <option @if ($endTime == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                    @else
+                                        <?php $value = sprintf("%02d", $i). ":30";?>
+                                        <option @if ($endTime == $value) selected @endif value="{{ $value }}">{{ $value }}</option>
+                                    @endif
+                                @endfor
+                            @endfor
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>定員数&nbsp;<span class="badge badge-danger">必須</span></th>
+                    <td>
+                        <?php $minimumCapacity = old('minimum_capacity') ?? $tableType->minimum_capacity; ?>
+                        <select name="minimum_capacity">
+                            @for ($i = 1; $i < 10; $i++)
+                                <option @if ($minimumCapacity == $i) selected @endif>{{ $i }}</option>
+                            @endfor
+                        </select>
+                        〜
+                        <?php $maxCapacity = old('max_capacity') ?? $tableType->max_capacity; ?>
                         <select name="max_capacity">
                             @for ($i = 1; $i < 10; $i++)
-                                <option @if ($tableType->max_capacity == $i) selected @endif>{{ $i }}</option>
+                                <option @if ($maxCapacity == $i) selected @endif>{{ $i }}</option>
                             @endfor
                         </select>
                         名
@@ -49,13 +81,14 @@
                 </tr>
                 <tr>
                     <th>販売可能数&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="number_of_sales" value="{{ $tableType->number_of_sales }}"></td>
+                    <td><input class="form-control" type="text" name="number_of_sales" value="{{ old('number_of_sales') ?? $tableType->number_of_sales }}"></td>
                 </tr>
                 <tr>
                     <th>コネクト&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
-                        可<input type="radio" name="connectable" value="1" @if ($tableType->connectable == '1') checked @endif>
-                        不可<input type="radio" name="connectable" value="0" @if ($tableType->connectable == '0') checked @endif>
+                        <?php $connectable = old('connectable') ?? $tableType->connectable; ?>
+                        <label>可<input type="radio" name="connectable" value="1" @if ($connectable == '1') checked @endif></label>
+                        <label>不可<input type="radio" name="connectable" value="0" @if ($connectable == '0') checked @endif></label>
                     </td>
                 </tr>
             </table>
