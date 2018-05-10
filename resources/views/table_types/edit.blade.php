@@ -14,8 +14,8 @@
                     <th>公開状態&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
                         <?php $releaseState = old('release_state') ?? $tableType->release_state; ?>
-                        公開<input type="radio" name="release_state" value="public" @if ($releaseState == 'public') checked @endif>
-                        非公開<input type="radio" name="release_state" value="private" @if ($releaseState == 'private') checked @endif>
+                        <label>公開<input type="radio" name="release_state" value="public" @if ($releaseState == 'public') checked @endif></label>
+                        <label>非公開<input type="radio" name="release_state" value="private" @if ($releaseState == 'private') checked @endif></label>
                     </td>
                 </tr>
                 <tr>
@@ -87,8 +87,8 @@
                     <th>コネクト&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
                         <?php $connectable = old('connectable') ?? $tableType->connectable; ?>
-                        可<input type="radio" name="connectable" value="1" @if ($connectable == '1') checked @endif>
-                        不可<input type="radio" name="connectable" value="0" @if ($connectable == '0') checked @endif>
+                        <label>可<input type="radio" name="connectable" value="1" @if ($connectable == '1') checked @endif></label>
+                        <label>不可<input type="radio" name="connectable" value="0" @if ($connectable == '0') checked @endif></label>
                     </td>
                 </tr>
             </table>
