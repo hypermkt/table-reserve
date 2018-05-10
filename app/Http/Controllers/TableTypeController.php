@@ -43,16 +43,16 @@ class TableTypeController extends Controller
             'restaurant_id' => session('restaurant')->id,
             'user_id' => Auth::id(),
             'release_state' => $request->release_state,
-            'title' => $request->title,
-            'start_time' => $request->start_time,
-            'end_time' => $request->end_time,
+            'table_type_name' => $request->table_type_name,
+            'available_start_time' => $request->available_start_time,
+            'available_end_time' => $request->available_end_time,
             'minimum_capacity' => $request->minimum_capacity,
             'max_capacity' => $request->max_capacity,
             'number_of_sales' => $request->number_of_sales,
             'connectable' => $request->connectable,
         ]);
 
-        return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->title . '」を登録しました' );
+        return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->table_type_name . '」を登録しました' );
     }
 
     /**
@@ -92,16 +92,16 @@ class TableTypeController extends Controller
     {
         $tableType = TableType::find($id);
         $tableType->release_state = $request->release_state;
-        $tableType->title = $request->title;
-        $tableType->start_time = $request->start_time;
-        $tableType->end_time = $request->end_time;
+        $tableType->table_type_name = $request->table_type_name;
+        $tableType->available_start_time = $request->available_start_time;
+        $tableType->available_end_time = $request->available_end_time;
         $tableType->minimum_capacity = $request->minimum_capacity;
         $tableType->max_capacity = $request->max_capacity;
         $tableType->number_of_sales = $request->number_of_sales;
         $tableType->connectable = $request->connectable;
         $tableType->save();
 
-        return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->title . '」を更新しました' );
+        return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->table_type_name . '」を更新しました' );
     }
 
     /**
@@ -112,7 +112,7 @@ class TableTypeController extends Controller
      */
     public function destroy(TableType $tableType)
     {
-        $tableName = $tableType->title;
+        $tableName = $tableType->table_type_name;
         $tableType->delete();
 
         return redirect()->to('/table_types')->with('success', '席タイプ「' . $tableName. '」を削除しました' );

@@ -26,9 +26,9 @@ class TableTypeRequest extends FormRequest
     {
         return [
             'release_state' => 'required',
-            'title' => 'required:max:255',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i',
+            'table_type_name' => 'required:max:255',
+            'available_start_time' => 'required|date_format:H:i',
+            'available_end_time' => 'required|date_format:H:i',
             'minimum_capacity' => 'required|numeric',
             'max_capacity' => 'required|numeric',
             'number_of_sales' => 'required|numeric',

@@ -16,9 +16,9 @@ use Faker\Generator as Faker;
 $factory->define(App\TableType::class, function (Faker $faker) {
     return [
         'release_state' => 'public',
-        'title' => $faker->name,
-        'start_time' => '10:00',
-        'end_time' => '18:00',
+        'table_type_name' => $faker->name,
+        'available_start_time' => '10:00',
+        'available_end_time' => '18:00',
         'minimum_capacity' => '1',
         'max_capacity' => '4',
         'number_of_sales' => '4',
