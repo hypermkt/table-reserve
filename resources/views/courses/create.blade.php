@@ -13,23 +13,23 @@
                     <th>席タイプ&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
                         @foreach ($tableTypes as $tableType)
-                            <input type="checkbox" name="table_types[]" value="{{ $tableType->id }}">{{ $tableType->table_type_name}}
+                            <label><input type="checkbox" name="table_types[]" value="{{ $tableType->id }}">{{ $tableType->table_type_name}}</label>
                         @endforeach
                     </td>
                 </tr>
                 <tr>
                     <th>公開状態&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
-                        公開<input type="radio" name="release_state" value="public">
-                        非公開<input type="radio" name="release_state" value="private">
+                        <label>公開<input type="radio" name="release_state" value="public"></label>
+                        <label>非公開<input type="radio" name="release_state" value="private"></label>
 
                     </td>
                 </tr>
                 <tr>
                     <th>区分&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
-                        コースメニュー<input type="radio" name="kind" value="course_menu">
-                        席のみ<input type="radio" name="kind" value="only_table">
+                        <label>コースメニュー<input type="radio" name="kind" value="course_menu"></label>
+                        <label>席のみ<input type="radio" name="kind" value="only_table"></label>
                     </td>
                 </tr>
                 <tr>
