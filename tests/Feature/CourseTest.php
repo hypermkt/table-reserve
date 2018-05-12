@@ -6,6 +6,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\DataAccess\Eloquent\User;
+use App\DataAccess\Eloquent\Restaurant;
+use App\DataAccess\Eloquent\TableType;
 
 class CourseTest extends TestCase
 {
@@ -16,11 +19,11 @@ class CourseTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $user = factory(\App\User::class)->create();
-        $restaurant = factory(\App\Restaurant::class)->create([
+        $user = factory(User::class)->create();
+        $restaurant = factory(Restaurant::class)->create([
             'user_id' => $user->id,
         ]);
-        $this->tableType = factory(\App\TableType::class)->create([
+        $this->tableType = factory(TableType::class)->create([
             'restaurant_id' => $restaurant->id,
             'user_id' => $user->id,
         ]);

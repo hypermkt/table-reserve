@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\DataAccess\Eloquent;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,21 +29,21 @@ class User extends Authenticatable
 
     public function tableTypes()
     {
-        return $this->hasMany('App\TableType');
+        return $this->hasMany('App\DataAccess\Eloquent\TableType');
     }
 
     public function courses()
     {
-        return $this->hasMany('App\Course');
+        return $this->hasMany('App\DataAccess\Eloquent\Course');
     }
 
     public function stocks()
     {
-        return $this->hasMany('App\Stock');
+        return $this->hasMany('App\DataAccess\Eloquent\Stock');
     }
 
     public function restaurant()
     {
-        return $this->hasOne('App\Restaurant');
+        return $this->hasOne('App\DataAccess\Eloquent\Restaurant');
     }
 }

@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\TableType::class, function (Faker $faker) {
+$factory->define(App\DataAccess\Eloquent\TableType::class, function (Faker $faker) {
     return [
         'release_state' => 'public',
         'table_type_name' => $faker->name,

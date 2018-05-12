@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\DataAccess\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,16 +10,16 @@ class Reservation extends Model
 
     public function restaurant()
     {
-        return $this->belongsTo('App\Restaurant');
+        return $this->belongsTo('App\DataAccess\Eloquent\Restaurant');
     }
 
     public function customer()
     {
-        return $this->belongsTo('App\Customer');
+        return $this->belongsTo('App\DataAccess\Eloquent\Customer');
     }
 
     public function course()
     {
-        return $this->belongsTo('App\Course');
+        return $this->belongsTo('App\DataAccess\Eloquent\Course');
     }
 }

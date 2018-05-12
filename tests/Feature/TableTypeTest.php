@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use \App\DataAccess\Eloquent\User;
+use \App\DataAccess\Eloquent\Restaurant;
 
 class TableTypeTest extends TestCase
 {
@@ -16,8 +18,8 @@ class TableTypeTest extends TestCase
         // MEMO: Laravelで独自のsetUpを呼ぶ場合は、parent::setUpの呼び出しが必要
         // refs: https://readouble.com/laravel/5.6/ja/testing.html
         parent::setUp();
-        $user = factory(\App\User::class)->create();
-        $restaurant = factory(\App\Restaurant::class)->create([
+        $user = factory(User::class)->create();
+        $restaurant = factory(Restaurant::class)->create([
             'user_id' => $user->id
         ]);
         $this->actingAs($user)->withSession(['restaurant' => $restaurant]);
