@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    reservations.reservations.index
+<div id="app">
+    <reservation-calendar-component></reservation-calendar-component>
+</div>
 @endsection

@@ -23,6 +23,7 @@ Vue.use(FullCalendar);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('reservation-component', require('./components/ReservationComponent.vue'));
+Vue.component('reservation-calendar-component', require('./components/Reservation/CalendarComponent.vue'));
 
 const app = new Vue({
     el: '#app'
