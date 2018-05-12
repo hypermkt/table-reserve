@@ -19,6 +19,11 @@ Route::get('login', ['as' => 'login', 'uses' => function () {
     return view('welcome');
 }]);
 
+Route::prefix('reservations')->group(function() {
+    Route::resource('calendars', 'Reservation\CalendarController')->only(['index'])->middleware('auth');
+    Route::resource('books', 'Reservation\BookController')->only(['index'])->middleware('auth');
+});
+
 Route::resource('table_types', 'TableTypeController')->middleware('auth');
 Route::resource('courses', 'CourseController')->middleware('auth');
 Route::resource('stocks', 'StockController')->middleware('auth');
