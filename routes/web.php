@@ -25,7 +25,7 @@ Route::prefix('reservations')->group(function() {
 });
 
 Route::prefix('settings')->group(function() {
-    Route::resource('general', 'Setting\GeneralController')->middleware('auth');
+    Route::resource('generals', 'Setting\GeneralController')->middleware('auth');
 });
 
 Route::resource('table_types', 'TableTypeController')->middleware('auth');
