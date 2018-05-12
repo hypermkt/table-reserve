@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+@component('components.alert-success')
+@endcomponent
+
 <div class="float-left">
     <h2>コース</h2>
 </div>

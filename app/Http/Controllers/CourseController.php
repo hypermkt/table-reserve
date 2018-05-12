@@ -54,7 +54,7 @@ class CourseController extends Controller
 
         $course->tableTypes()->attach($request->table_types);
 
-        return redirect()->to('/courses');
+        return redirect()->to('/courses')->with('success', 'メニュー「' . $request->course_name . '」を登録しました');
     }
 
     /**
@@ -103,7 +103,7 @@ class CourseController extends Controller
 
         $course->tableTypes()->sync($request->table_types);
 
-        return redirect()->to('/courses');
+        return redirect()->to('/courses')->with('success', 'メニュー「' . $request->course_name . '」を更新しました');
     }
 
     /**
@@ -114,9 +114,10 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
+        $courseName = $course->course_name;
         $course->tableTypes()->detach();
         $course->delete();
 
-        return redirect()->to('/courses');
+        return redirect()->to('/courses')->with('success', 'メニュー「' . $courseName . '」を削除しました');
     }
 }

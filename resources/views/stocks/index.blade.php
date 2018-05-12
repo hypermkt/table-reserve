@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @component('components.alert-success')
+    @endcomponent
+
     <h2>在庫管理</h2>
     <h3>{{ $baseDate }}</h3>
 
@@ -18,7 +21,7 @@
                 <tr>
                     <td>日付</td>
                     @foreach ($tableTypes as $tableType)
-                        <td>{{ $tableType->title }}</td>
+                        <td>{{ $tableType->table_type_name }}</td>
                     @endforeach
                 </tr>
                 @for ($i = 0; $i < count($stocksTable); $i++ )
