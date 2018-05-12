@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
 use App\Http\Requests\CourseRequest;
-use App\TableType;
+use App\DataAccess\Eloquent\Course;
+use App\DataAccess\Eloquent\TableType;
 use Encore\Admin\Widgets\Table;
 use Illuminate\Http\Request;
 use Auth;

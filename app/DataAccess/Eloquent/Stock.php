@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\DataAccess\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,11 +10,11 @@ class Stock extends Model
 
     public function tableType()
     {
-        return $this->belongsTo('App\TableType');
+        return $this->belongsTo('App\DataAccess\Eloquent\TableType');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\DataAccess\Eloquent\User');
     }
 }

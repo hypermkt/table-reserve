@@ -12,7 +12,7 @@ class RestaurantsSeeder extends Seeder
     public function run()
     {
         DB::table('restaurants')->insert([
-            'user_id' => App\User::first()->id,
+            'user_id' => App\DataAccess\Eloquent\User::first()->id,
             'title' => 'hoge',
             'description' => 'hoge',
             'release_state' => 'public',

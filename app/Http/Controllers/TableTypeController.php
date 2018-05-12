@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TableTypeRequest;
 use Illuminate\Http\Request;
-use App\TableType;
+use App\DataAccess\Eloquent\TableType;
 use Auth;
 
 class TableTypeController extends Controller
@@ -107,7 +107,7 @@ class TableTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TableType $tableType
+     * @param  \App\DataAccess\Eloquent\TableType $tableType
      * @return \Illuminate\Http\Response
      */
     public function destroy(TableType $tableType)

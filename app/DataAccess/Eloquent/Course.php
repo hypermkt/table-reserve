@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\DataAccess\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,16 +10,16 @@ class Course extends Model
 
     public function tableTypes()
     {
-        return $this->belongsToMany('App\TableType');
+        return $this->belongsToMany('App\DataAccess\Eloquent\TableType');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\DataAccess\Eloquent\User');
     }
 
     public function reservations()
     {
-        return $this->hasMany('App\Reservation');
+        return $this->hasMany('App\DataAccess\Eloquent\Reservation');
     }
 }

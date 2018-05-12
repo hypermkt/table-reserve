@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Course::class, function (Faker $faker) {
+$factory->define(App\DataAccess\Eloquent\Course::class, function (Faker $faker) {
     return [
         'release_state' => 'public',
         'kind' => 'course_menu',

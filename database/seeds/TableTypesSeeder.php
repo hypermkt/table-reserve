@@ -12,8 +12,8 @@ class TableTypesSeeder extends Seeder
     public function run()
     {
         DB::table('table_types')->insert([
-            'restaurant_id' => App\Restaurant::first()->id,
-            'user_id' => App\User::first()->id,
+            'restaurant_id' => App\DataAccess\Eloquent\Restaurant::first()->id,
+            'user_id' => App\DataAccess\Eloquent\User::first()->id,
             'release_state' => 'public',
             'table_type_name' => '小テーブル',
             'available_start_time' => '17:00:00',
@@ -25,8 +25,8 @@ class TableTypesSeeder extends Seeder
         ]);
 
         DB::table('table_types')->insert([
-            'restaurant_id' => App\Restaurant::first()->id,
-            'user_id' => App\User::first()->id,
+            'restaurant_id' => App\DataAccess\Eloquent\Restaurant::first()->id,
+            'user_id' => App\DataAccess\Eloquent\User::first()->id,
             'release_state' => 'public',
             'table_type_name' => '中テーブル',
             'available_start_time' => '17:00:00',

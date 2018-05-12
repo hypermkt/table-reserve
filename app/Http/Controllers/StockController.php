@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\TableType;
-use App\Stock;
+use App\DataAccess\Eloquent\TableType;
+use App\DataAccess\Eloquent\Stock;
 use Auth;
 
 class StockController extends Controller

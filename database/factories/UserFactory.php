@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\DataAccess\Eloquent\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'handle' => $faker->name,

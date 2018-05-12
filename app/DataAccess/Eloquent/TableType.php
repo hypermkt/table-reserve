@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\DataAccess\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,21 +10,21 @@ class TableType extends Model
 
     public function courses()
     {
-        return $this->belongsToMany('App\Course');
+        return $this->belongsToMany('App\DataAccess\Eloquent\Course');
     }
 
     public function stocks()
     {
-        return $this->hasMany('App\Stock');
+        return $this->hasMany('App\DataAccess\Eloquent\Stock');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\DataAccess\Eloquent\User');
     }
 
     public function restaurant()
     {
-        return $this->belongsTo('App\Restaurant');
+        return $this->belongsTo('App\DataAccess\Eloquent\Restaurant');
     }
 }

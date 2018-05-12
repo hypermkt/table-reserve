@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\DataAccess\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,16 +10,16 @@ class Restaurant extends Model
 
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->hasOne('App\DataAccess\Eloquent\User');
     }
 
     public function tableTypes()
     {
-        return $this->hasMany('App\TableType');
+        return $this->hasMany('App\DataAccess\Eloquent\TableType');
     }
 
     public function reservations()
     {
-        return $this->hasMany('App\Reservation');
+        return $this->hasMany('App\DataAccess\Eloquent\Reservation');
     }
 }

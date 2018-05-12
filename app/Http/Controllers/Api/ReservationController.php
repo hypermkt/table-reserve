@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\Customer;
-use App\Reservation;
+use App\DataAccess\Eloquent\Customer;
+use App\DataAccess\Eloquent\Reservation;
 use Illuminate\Support\Facades\Log;
 
 class ReservationController extends Controller
