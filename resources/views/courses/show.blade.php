@@ -11,7 +11,7 @@
         <th>席タイプ</th>
         <td>
             @foreach ($course->tableTypes as $tableType)
-                <p>{{ $tableType->title }}</p>
+                <p>{{ $tableType->table_type_name }}</p>
             @endforeach
         </td>
     </tr>
@@ -25,7 +25,7 @@
     </tr>
     <tr>
         <th>メニュー名</th>
-        <td>{{ $course->title }}</td>
+        <td>{{ $course->course_name }}</td>
     </tr>
     <tr>
         <th>料金</th>

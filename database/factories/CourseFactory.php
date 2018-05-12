@@ -17,7 +17,7 @@ $factory->define(App\Course::class, function (Faker $faker) {
     return [
         'release_state' => 'public',
         'kind' => 'course_menu',
-        'title' => 'hoge',
+        'course_name' => 'hoge',
         'price' => 1000,
         'duration_minutes' => 60,
     ];

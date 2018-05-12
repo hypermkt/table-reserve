@@ -25,7 +25,7 @@ class CourseRequest extends FormRequest
     {
         return [
             'release_state' => 'required',
-            'title' => 'required|max:255',
+            'course_name' => 'required|max:255',
             'kind' => 'required',
             'price' => 'required|numeric',
             'duration_minutes' => 'required',

@@ -124,7 +124,9 @@ return [
         'number_of_sales' => '販売可能数',
         'connectable' => 'コネクト設定',
 
+        'course_name' => 'メニュー名',
         'price' => '料金',
+        'kind' => '区分',
         'duration_minutes' => '滞在時間(分)',
     ],
 
