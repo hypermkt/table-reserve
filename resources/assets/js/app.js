@@ -29,6 +29,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('reservation-component', require('./components/ReservationComponent.vue'));
 Vue.component('reservation-calendar-component', require('./components/Reservation/CalendarComponent.vue'));
 Vue.component('reservation-scheduler-component', require('./components/Reservation/SchedulerComponent.vue'));
+Vue.component('setting-general-component', require('./components/Setting/GeneralComponent.vue'));
 
 const app = new Vue({
     el: '#app'

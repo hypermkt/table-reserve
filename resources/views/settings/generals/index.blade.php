@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    settings.generals.index
+<div id="app">
+    <setting-general-component></setting-general-component>
+</div>
 @endsection
