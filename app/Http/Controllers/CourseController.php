@@ -47,7 +47,7 @@ class CourseController extends Controller
             'user_id' => Auth::id(),
             'release_state' => $request->release_state,
             'kind' => $request->kind,
-            'title' => $request->title,
+            'course_name' => $request->course_name,
             'price' => $request->price,
             'duration_minutes' => $request->duration_minutes,
         ]);
@@ -96,7 +96,7 @@ class CourseController extends Controller
         $course = Course::find($id);
         $course->release_state = $request->release_state;
         $course->kind = $request->kind;
-        $course->title = $request->title;
+        $course->course_name = $request->course_name;
         $course->price = $request->price;
         $course->duration_minutes = $request->duration_minutes;
         $course->save();

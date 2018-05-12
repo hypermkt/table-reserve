@@ -15,7 +15,7 @@
         <div class="card float-left mr-3 mb-3" style="width: 18rem;">
             <div class="card-body">
                 <h2 class="card-title">
-                    <a href="/courses/{{ $course->id }}">{{ $course->title }}</a>
+                    <a href="/courses/{{ $course->id }}">{{ $course->course_name }}</a>
                 </h2>
                 <p class="card-text">
                     @component('components.btn-action')

@@ -34,7 +34,7 @@
                 </tr>
                 <tr>
                     <th>メニュー名&nbsp;<span class="badge badge-danger">必須</span></th>
-                    <td><input class="form-control" type="text" name="title"></td>
+                    <td><input class="form-control" type="text" name="course_name"></td>
                 </tr>
                 <tr>
                     <th>料金&nbsp;<span class="badge badge-danger">必須</span></th>
