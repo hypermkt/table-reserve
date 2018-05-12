@@ -16,6 +16,17 @@
             <a class="p-2 text-dark" href="/table_types">席タイプ設定</a>
             <a class="p-2 text-dark" href="/courses">コース設定</a>
             <a class="p-2 text-dark" href="/stocks">在庫管理</a>
+
+            <div class="dropdown">
+                <a class="text-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    各種設定
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="/setting/generals">基本設定</a>
+                </div>
+            </div>
+
             <a class="btn btn-outline-success" href="/{{ Auth::user()->name }}" target="_blank">予約ページを開く</a>
             <a class="btn btn-outline-primary" href="/auth/twitter/logout">Logout</a>
         @else
