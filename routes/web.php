@@ -24,6 +24,10 @@ Route::prefix('reservations')->group(function() {
     Route::resource('books', 'Reservation\BookController')->only(['index'])->middleware('auth');
 });
 
+Route::prefix('settings')->group(function() {
+    Route::resource('general', 'Setting\GeneralController')->middleware('auth');
+});
+
 Route::resource('table_types', 'TableTypeController')->middleware('auth');
 Route::resource('courses', 'CourseController')->middleware('auth');
 Route::resource('stocks', 'StockController')->middleware('auth');
