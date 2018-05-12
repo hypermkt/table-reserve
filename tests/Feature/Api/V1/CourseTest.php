@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Api;
+namespace Tests\Feature\Api\V1;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -35,7 +35,7 @@ class CourseTest extends TestCase
 
     public function testIndex()
     {
-        $response = $this->get('/api/courses?username=' . $this->user->name);
+        $response = $this->get('/api/v1/courses?username=' . $this->user->name);
         $response->assertStatus(200);
     }
 }

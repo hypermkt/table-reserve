@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Api;
+namespace Tests\Feature\Api\V1;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -35,7 +35,7 @@ class ReservationTest extends TestCase
 
     public function testStore()
     {
-        $response = $this->post('/api/reservations', [
+        $response = $this->post('/api/v1/reservations', [
             'name' => 'hpge',
             'email' => 'hpge@example.com',
             'tel' => '03-1234-5678',
