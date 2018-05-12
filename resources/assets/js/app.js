@@ -8,10 +8,16 @@
 require('./bootstrap');
 
 import ElementUI from 'element-ui';
+import FullCalendar from 'vue-full-calendar'
 import 'element-ui/lib/theme-chalk/index.css';
+
+import "fullcalendar/dist/fullcalendar.min.css";
+import "fullcalendar-scheduler";
+import "fullcalendar-scheduler/dist/scheduler.min.css";
 
 window.Vue = require('vue');
 Vue.use(ElementUI);
+Vue.use(FullCalendar);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -21,6 +27,8 @@ Vue.use(ElementUI);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('reservation-component', require('./components/ReservationComponent.vue'));
+Vue.component('reservation-calendar-component', require('./components/Reservation/CalendarComponent.vue'));
+Vue.component('reservation-scheduler-component', require('./components/Reservation/SchedulerComponent.vue'));
 
 const app = new Vue({
     el: '#app'

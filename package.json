@@ -11,17 +11,20 @@
     },
     "devDependencies": {
         "axios": "^0.18",
+        "babel-preset-stage-2": "^6.24.1",
         "bootstrap": "^4.0.0",
-        "popper.js": "^1.12",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
+        "popper.js": "^1.12",
         "vue": "^2.5.7"
     },
     "dependencies": {
         "element-ui": "^2.3.7",
+        "fullcalendar-scheduler": "^1.9.4",
         "moment": "^2.22.1",
-        "v-calendar": "^0.9.7"
+        "v-calendar": "^0.9.7",
+        "vue-full-calendar": "^2.5.4"
     }
 }
