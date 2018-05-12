@@ -16,7 +16,7 @@
                         @foreach ($tableTypes as $tableType)
                             <input type="checkbox" name="table_types[]" value="{{ $tableType->id }}"
                                    @if (in_array($tableType->id, $course->tableTypes->pluck('id')->toArray())) checked @endif
-                            >{{ $tableType->title }}
+                            >{{ $tableType->table_type_name }}
                         @endforeach
                     </td>
                 </tr>

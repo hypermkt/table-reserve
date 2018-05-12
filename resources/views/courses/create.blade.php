@@ -13,7 +13,7 @@
                     <th>席タイプ&nbsp;<span class="badge badge-danger">必須</span></th>
                     <td>
                         @foreach ($tableTypes as $tableType)
-                            <input type="checkbox" name="table_types[]" value="{{ $tableType->id }}">{{ $tableType->title }}
+                            <input type="checkbox" name="table_types[]" value="{{ $tableType->id }}">{{ $tableType->table_type_name}}
                         @endforeach
                     </td>
                 </tr>
