@@ -11,6 +11,8 @@
     <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/">TableReserve</a></h5>
     <nav class="my-2 my-md-0 mr-md-3">
         @if (Auth::check())
+            <a class="p-2 text-dark" href="/calendars">予約カレンダー</a>
+            <a class="p-2 text-dark" href="/books">予約台帳</a>
             <a class="p-2 text-dark" href="/table_types">席タイプ設定</a>
             <a class="p-2 text-dark" href="/courses">コース設定</a>
             <a class="p-2 text-dark" href="/stocks">在庫管理</a>
