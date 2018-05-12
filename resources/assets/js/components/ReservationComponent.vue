@@ -100,7 +100,7 @@ export default {
     methods: {
         fetchCourses() {
             let that = this;
-            axios.get('/api/courses', {params: {
+            axios.get('/api/v1/courses', {params: {
                 username: this.username
             }}).then(function(response) {
                 that.courses = response.data.courses;
@@ -119,7 +119,7 @@ export default {
                 tel: this.form.tel,
             };
             console.table(params);
-            axios.post('/api/reservations', params).then((response) => {
+            axios.post('/api/v1/reservations', params).then((response) => {
                 this.isReserved = true;
             })
         }
