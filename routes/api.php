@@ -17,5 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('courses', 'Api\CourseController@index');
-Route::post('reservations', 'Api\ReservationController@store');
+Route::prefix('v1')->group(function() {
+    Route::get('courses', 'Api\V1\CourseController@index');
+    Route::post('reservations', 'Api\V1\ReservationController@store');
+});
