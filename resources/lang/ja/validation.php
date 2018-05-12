@@ -126,6 +126,7 @@ return [
 
         'course_name' => 'メニュー名',
         'price' => '料金',
+        'kind' => '区分',
         'duration_minutes' => '滞在時間(分)',
     ],
 
