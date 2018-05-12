@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    reservations.books.index
+<div id="app">
+    <reservation-scheduler-component></reservation-scheduler-component>
+</div>
 @endsection
