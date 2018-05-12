@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\Restaurant;
+use App\DataAccess\Eloquent\User;
+use App\DataAccess\Eloquent\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Socialite;
