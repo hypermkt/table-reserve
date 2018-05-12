@@ -76,7 +76,7 @@ class StockController extends Controller
             }
         }
 
-        return redirect()->to('/stocks');
+        return redirect()->to('/stocks')->with('success', '在庫設定を登録しました');
     }
 
     /**

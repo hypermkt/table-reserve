@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @component('components.alert-success')
+    @endcomponent
+
     <h2>在庫管理</h2>
     <h3>{{ $baseDate }}</h3>
 
