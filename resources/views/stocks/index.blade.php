@@ -18,7 +18,7 @@
                 <tr>
                     <td>日付</td>
                     @foreach ($tableTypes as $tableType)
-                        <td>{{ $tableType->title }}</td>
+                        <td>{{ $tableType->table_type_name }}</td>
                     @endforeach
                 </tr>
                 @for ($i = 0; $i < count($stocksTable); $i++ )
