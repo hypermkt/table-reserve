@@ -40,7 +40,7 @@ class TableTypeController extends Controller
     public function store(TableTypeRequest $request)
     {
         TableType::create([
-            'restaurant_id' => session('restaurant')->id,
+            'restaurant_id' => session('restaurant_id'),
             'user_id' => Auth::id(),
             'release_state' => $request->release_state,
             'table_type_name' => $request->table_type_name,
