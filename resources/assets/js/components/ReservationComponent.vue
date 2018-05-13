@@ -8,7 +8,7 @@
         <div>
           <h6 class="border-bottom pb-2"><b>コース・メニュー</b></h6>
         </div>
-        <div v-for="item in this.courses">
+        <div v-for="item in this.courses" :key="item.id">
           <label>
             <el-radio v-model="course_id" :label="item.id">{{ item.course_name }} ( {{ item.duration_minutes }}分 {{ item.price }}円 )</el-radio>
           </label>
