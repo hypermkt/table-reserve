@@ -10,65 +10,66 @@
         </div>
         <div v-for="item in this.courses" :key="item.id">
           <label>
-            <el-radio v-model="course_id" :label="item.id">{{ item.course_name }} ( {{ item.duration_minutes }}分 {{ item.price }}円 )</el-radio>
+            <el-radio
+              v-model="course_id"
+              :label="item.id">{{ item.course_name }} ( {{ item.duration_minutes }}分 {{ item.price }}円 )</el-radio>
           </label>
         </div>
       </div>
 
-      <div>
+      <div v-if="this.course_id != null">
         <div>
-          <h6 class="border-bottom pt-2 pb-2"><b>人数を選択してください</b></h6>
-        </div>
-        <el-select v-model="number_of_people" placeholder="Select">
-          <el-option
-            v-for="item in this.number_of_people_options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </div>
+          <div>
+            <h6 class="border-bottom pt-2 pb-2"><b>予約日時/人数を選択してください</b></h6>
+          </div>
+          <div class="p-2">
+            <v-date-picker
+              mode='single'
+              v-model='date'
+              is-inline>
+            </v-date-picker>
+          </div>
 
-      <div>
+          <div class="p-2">
+            <el-select v-model="number_of_people" placeholder="Select">
+              <el-option
+                v-for="item in this.number_of_people_options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </div>
+
+          <div class="p-2">
+            <el-button
+              v-for="item in this.times"
+              :key="item.label"
+              @click="time=item.label">{{ item.label }}</el-button>
+          </div>
+        </div>
+
         <div>
-          <h6 class="border-bottom pt-2 pb-2"><b>予約日時を選択してください</b></h6>
-        </div>
-        <div class="p-2">
-          <v-date-picker
-             mode='single'
-             v-model='date'
-             is-inline>
-          </v-date-picker>
+          <div>
+            <h6 class="border-bottom pt-2 pb-2"><b>連絡先を入力してください</b></h6>
+          </div>
+          <el-form ref="form" :model="form" label-width="120px">
+            <el-form-item label="お名前">
+              <el-input v-model="form.name"></el-input>
+            </el-form-item>
+
+            <el-form-item label="メールアドレス">
+              <el-input v-model="form.email"></el-input>
+            </el-form-item>
+
+            <el-form-item label="電話番号">
+              <el-input v-model="form.tel"></el-input>
+            </el-form-item>
+          </el-form>
         </div>
 
-        <div class="p-2">
-          <el-button
-             v-for="item in this.times"
-             :key="item.label"
-             @click="time=item.label">{{ item.label }}</el-button>
-        </div>
+        <button type="button" class="btn btn-primary btn-lg btn-block" @click="reserve">予約する</button>
       </div>
-
-      <div>
-        <div>
-          <h6 class="border-bottom pt-2 pb-2"><b>連絡先を入力してください</b></h6>
-        </div>
-        <el-form ref="form" :model="form" label-width="120px">
-          <el-form-item label="お名前">
-            <el-input v-model="form.name"></el-input>
-          </el-form-item>
-
-          <el-form-item label="メールアドレス">
-            <el-input v-model="form.email"></el-input>
-          </el-form-item>
-
-          <el-form-item label="電話番号">
-            <el-input v-model="form.tel"></el-input>
-          </el-form-item>
-        </el-form>
-      </div>
-
-      <button type="button" class="btn btn-primary btn-lg btn-block" @click="reserve">予約する</button>
     </div>
   </div>
 </template>
