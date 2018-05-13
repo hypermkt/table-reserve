@@ -7,7 +7,7 @@
             <div>
                 <ul>
                     <li v-for="item in this.courses">
-                        <el-radio v-model="course_id" :label="item.id">{{ item.title }}</el-radio>
+                        <el-radio v-model="course_id" :label="item.id">{{ item.course_name }}</el-radio>
                     </li>
                 </ul>
             </div>
