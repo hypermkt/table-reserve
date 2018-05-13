@@ -12,7 +12,21 @@
           <label>
             <el-radio
               v-model="course_id"
+              @change="table_types = item.table_types"
               :label="item.id">{{ item.course_name }} ( {{ item.duration_minutes }}分 {{ item.price }}円 )</el-radio>
+          </label>
+        </div>
+      </div>
+
+      <div v-if="this.course_id != null">
+        <div>
+          <h6 class="border-bottom pb-2"><b>席</b></h6>
+        </div>
+        <div v-for="table_type in this.table_types" :key="table_type.id">
+          <label>
+            <el-radio
+              v-model="table_type_id"
+              :label="table_type.id">{{ table_type.table_type_name }}</el-radio>
           </label>
         </div>
       </div>
@@ -96,6 +110,8 @@ export default {
         { label: '11:30' },
       ],
       course_id: null,
+      table_type_id: null,
+      table_types: [],
       number_of_people: '',
       date: null,
       time: null,
