@@ -27,4 +27,12 @@ class RestaurantTest extends TestCase
         $response = $this->get('/api/v1/restaurants/' . $this->restaurant->id);
         $response->assertStatus(200);
     }
+
+    public function testUpdate()
+    {
+        $response = $this->put('/api/v1/restaurants/' . $this->restaurant->id, [
+            'release_state' => 'public'
+        ]);
+        $response->assertStatus(200);
+    }
 }
