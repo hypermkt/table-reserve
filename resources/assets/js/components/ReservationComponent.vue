@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div v-if="this.course_id != null">
+      <div v-if="this.table_type_id != null">
         <div>
           <div>
             <h6 class="border-bottom pt-2 pb-2"><b>予約日時/人数を選択してください</b></h6>
