@@ -22,7 +22,7 @@ class TableTypeTest extends TestCase
         $restaurant = factory(Restaurant::class)->create([
             'user_id' => $user->id
         ]);
-        $this->actingAs($user)->withSession(['restaurant' => $restaurant]);
+        $this->actingAs($user)->withSession(['restaurant_id' => $restaurant->id]);
     }
 
     public function testIndex()

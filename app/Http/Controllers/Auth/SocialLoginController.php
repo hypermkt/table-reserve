@@ -22,7 +22,7 @@ class SocialLoginController extends Controller
 
         $user = $this->findOrCreateUser($twitterUser);
         $restaurant = $this->findOrCreateRestaurant($user);
-        session(['restaurant' => $restaurant]);
+        session(['restaurant_id' => $restaurant->id]);
 
         Auth::login($user, true);
 
