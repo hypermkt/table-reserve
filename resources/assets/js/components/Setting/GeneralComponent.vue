@@ -35,7 +35,12 @@ export default {
             })
         },
         updateReleaseState() {
-            console.log("updateReleaseState called");
+            let releaseState = this.release_state ? 'public' : 'private';
+            axios.put('/api/v1/restaurants/' + this.restaurantId, {
+                release_state: releaseState
+            }).then((response) => {
+                this.release_state = response.data.release_state == 'public';
+            })
         }
     }
 }
