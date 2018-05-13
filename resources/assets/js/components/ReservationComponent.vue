@@ -22,11 +22,12 @@
         <div>
           <h6 class="border-bottom pb-2"><b>席</b></h6>
         </div>
-        <div v-for="table_type in this.table_types" :key="table_type.id">
+        <div v-for="item in this.table_types" :key="item.id">
           <label>
             <el-radio
               v-model="table_type_id"
-              :label="table_type.id">{{ table_type.table_type_name }}</el-radio>
+              @change="table_type=item"
+              :label="item.id">{{ item.table_type_name }}</el-radio>
           </label>
         </div>
       </div>
@@ -98,11 +99,7 @@ export default {
     return {
       isReserved: false,
       courses: [],
-      number_of_people_options: [
-        { label: '1人', value: 1 },
-        { label: '2人', value: 2 },
-        { label: '3人', value: 3 },
-      ],
+      number_of_people_options: [],
       times: [
         { label: '10:00' },
         { label: '10:30' },
@@ -112,6 +109,7 @@ export default {
       course_id: null,
       table_type_id: null,
       table_types: [],
+      table_type: null,
       number_of_people: '',
       date: null,
       time: null,
@@ -126,6 +124,11 @@ export default {
     'v-calendar': Calendar
   },
   props: ['username', 'restaurantId'],
+  watch: {
+    table_type() {
+      this.createNumberOfPeopleOptions();
+    }
+  },
   created() {
     this.fetchCourses();
   },
@@ -154,6 +157,11 @@ export default {
       axios.post('/api/v1/reservations', params).then((response) => {
         this.isReserved = true;
       })
+    },
+    createNumberOfPeopleOptions() {
+      for (let i = this.table_type.minimum_capacity; i <= this.table_type.max_capacity; i++) {
+        this.number_of_people_options.push({ label: i + '人', value: i });
+      }
     }
   }
 }
