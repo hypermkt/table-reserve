@@ -48,7 +48,7 @@ class MonthTest extends TestCase
         $response = $this->get('/api/v1/reservations/schedules/months?date=2018-05&table_type_id=' . $this->tableType->id . '&username=' . $this->user->name);
         $response->assertStatus(200);
         $response->assertJsonStructure([
-            'disable_dates',
+            'disabled_dates',
         ]);
     }
 }

@@ -42,7 +42,7 @@ class MonthController extends Controller
         }
 
         return response()->json([
-            'disable_dates' => $disabledDates
+            'disabled_dates' => $disabledDates
         ]);
     }
 }
