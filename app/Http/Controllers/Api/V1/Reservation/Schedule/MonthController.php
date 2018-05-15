@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\V1\Reservation\Schedule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Auth;
 use App\DataAccess\Eloquent\Stock;
+use App\DataAccess\Eloquent\User;
 
 class MonthController extends Controller
 {
@@ -23,7 +23,9 @@ class MonthController extends Controller
         $endDate = clone $date;
         $targetDate = clone $date;
 
-        $stocks = Stock::where('user_id', Auth::id())
+        $user = User::where('name', $request->username)->first();
+
+        $stocks = Stock::where('user_id', $user->id)
             ->where('table_type_id', $request->table_type_id)
             ->where('accept_date', '>=', $startDate->day(1)->toRfc3339String())
             ->where('accept_date', '<', $endDate->addMonth(1)->day(1)->toRfc3339String())

@@ -41,12 +41,11 @@ class MonthTest extends TestCase
             'accept_date' => '2018-05-01',
             'acceptable_table_number' => 3,
         ]);
-        $this->actingAs($this->user, 'api');
     }
 
     public function testIndex()
     {
-        $response = $this->get('/api/v1/reservations/schedules/months?date=2018-05&table_type_id=' . $this->tableType->id);
+        $response = $this->get('/api/v1/reservations/schedules/months?date=2018-05&table_type_id=' . $this->tableType->id . '&username=' . $this->user->name);
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'disable_dates',
