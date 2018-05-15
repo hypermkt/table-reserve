@@ -41,6 +41,7 @@
             <v-date-picker
               mode='single'
               v-model='date'
+              :disabled-dates='disabled_dates'
               is-inline>
             </v-date-picker>
           </div>
@@ -110,6 +111,10 @@ export default {
       table_type_id: null,
       table_types: [],
       table_type: null,
+      disabled_dates: {
+        start: null,
+        end: new Date()
+      },
       number_of_people: '',
       date: null,
       time: null,
@@ -127,6 +132,7 @@ export default {
   watch: {
     table_type() {
       this.createNumberOfPeopleOptions();
+      this.fetchCalendarMonth();
     }
   },
   created() {
@@ -139,6 +145,19 @@ export default {
         username: this.username
       }}).then(function(response) {
         that.courses = response.data.courses;
+      })
+    },
+    fetchCalendarMonth() {
+      let params = {
+        date: '2018-05',
+        table_type_id: this.table_type_id,
+        username: this.username,
+      }
+      console.table(params);
+      axios.get('/api/v1/reservations/schedules/months', {
+        params: params
+      }).then((response) => {
+        this.disabled_dates = response.data.disable_dates;
       })
     },
     reserve: function() {
