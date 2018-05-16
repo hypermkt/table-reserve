@@ -42,6 +42,8 @@
               mode='single'
               v-model='date'
               :disabled-dates='disabled_dates'
+              :min-page="{ year: this.calendar.min.year, month: this.calendar.min.month }"
+              :max-page="{ year: this.calendar.max.year, month: this.calendar.max.month }"
               is-inline>
             </v-date-picker>
           </div>
@@ -111,9 +113,16 @@ export default {
       table_type_id: null,
       table_types: [],
       table_type: null,
-      disabled_dates: {
-        start: null,
-        end: new Date()
+      disabled_dates: {},
+      calendar: {
+        min: {
+          year: null,
+          month: null,
+        },
+        max: {
+          year: null,
+          month: null,
+        }
       },
       number_of_people: '',
       date: null,
@@ -136,6 +145,13 @@ export default {
     }
   },
   created() {
+    let min = moment();
+    this.calendar.min.year = parseInt(min.format('YYYY'));
+    this.calendar.min.month = parseInt(min.format('M'));
+    let max = moment().add(1, 'months');
+    this.calendar.max.year = parseInt(max.format('YYYY'));
+    this.calendar.max.month = parseInt(max.format('M'));
+    console.table(this.calendar);
     this.fetchCourses();
   },
   methods: {
@@ -149,7 +165,7 @@ export default {
     },
     fetchCalendarMonth() {
       let params = {
-        date: '2018-05',
+        date: moment().format('YYYY-MM'),
         table_type_id: this.table_type_id,
         username: this.username,
       }
@@ -157,7 +173,7 @@ export default {
       axios.get('/api/v1/reservations/schedules/months', {
         params: params
       }).then((response) => {
-        this.disabled_dates = response.data.disable_dates;
+        this.disabled_dates = response.data.disabled_dates;
       })
     },
     reserve: function() {
