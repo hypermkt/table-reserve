@@ -21,4 +21,5 @@ Route::prefix('v1')->group(function() {
     Route::get('courses', 'Api\V1\CourseController@index');
     Route::post('reservations', 'Api\V1\ReservationController@store');
     Route::resource('restaurants', 'Api\V1\RestaurantController')->only(['show', 'update']);
+    Route::get('reservations/schedules/months', 'Api\V1\Reservation\Schedule\MonthController@index');
 });
