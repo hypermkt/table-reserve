@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::prefix('v1')->group(function() {
     Route::get('courses', 'Api\V1\CourseController@index');
     Route::post('reservations', 'Api\V1\ReservationController@store');
