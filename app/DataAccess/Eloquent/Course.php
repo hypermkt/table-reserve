@@ -10,16 +10,16 @@ class Course extends Model
 
     public function tableTypes()
     {
-        return $this->belongsToMany('App\DataAccess\Eloquent\TableType');
+        return $this->belongsToMany(TableType::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\DataAccess\Eloquent\User');
+        return $this->belongsTo(User::class);
     }
 
     public function reservations()
     {
-        return $this->hasMany('App\DataAccess\Eloquent\Reservation');
+        return $this->hasMany(Reservation::class);
     }
 }

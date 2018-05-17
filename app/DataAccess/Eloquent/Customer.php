@@ -10,6 +10,6 @@ class Customer extends Model
 
     public function reservations()
     {
-        return $this->hasMany('App\DataAccess\Eloquent\Reservation');
+        return $this->hasMany(Reservation::class);
     }
 }

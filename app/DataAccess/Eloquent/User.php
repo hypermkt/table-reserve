@@ -29,21 +29,21 @@ class User extends Authenticatable
 
     public function tableTypes()
     {
-        return $this->hasMany('App\DataAccess\Eloquent\TableType');
+        return $this->hasMany(TableType::class);
     }
 
     public function courses()
     {
-        return $this->hasMany('App\DataAccess\Eloquent\Course');
+        return $this->hasMany(Course::class);
     }
 
     public function stocks()
     {
-        return $this->hasMany('App\DataAccess\Eloquent\Stock');
+        return $this->hasMany(Stock::class);
     }
 
     public function restaurant()
     {
-        return $this->hasOne('App\DataAccess\Eloquent\Restaurant');
+        return $this->hasOne(Restaurant::class);
     }
 }

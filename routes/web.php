@@ -31,7 +31,6 @@ Route::prefix('settings')->group(function() {
 Route::resource('table_types', 'TableTypeController')->middleware('auth');
 Route::resource('courses', 'CourseController')->middleware('auth');
 Route::resource('stocks', 'StockController')->middleware('auth');
-Route::resource('pages', 'PageController')->middleware('auth');
 
 Route::get('auth/twitter', 'Auth\SocialLoginController@redirectToProvider');
 Route::get('auth/twitter/callback', 'Auth\SocialLoginController@handleProviderCallback');
