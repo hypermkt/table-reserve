@@ -10,16 +10,16 @@ class Reservation extends Model
 
     public function restaurant()
     {
-        return $this->belongsTo('App\DataAccess\Eloquent\Restaurant');
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function customer()
     {
-        return $this->belongsTo('App\DataAccess\Eloquent\Customer');
+        return $this->belongsTo(Customer::class);
     }
 
     public function course()
     {
-        return $this->belongsTo('App\DataAccess\Eloquent\Course');
+        return $this->belongsTo(Course::class);
     }
 }

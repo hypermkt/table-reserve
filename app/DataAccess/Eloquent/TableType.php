@@ -10,21 +10,21 @@ class TableType extends Model
 
     public function courses()
     {
-        return $this->belongsToMany('App\DataAccess\Eloquent\Course');
+        return $this->belongsToMany(Course::class);
     }
 
     public function stocks()
     {
-        return $this->hasMany('App\DataAccess\Eloquent\Stock');
+        return $this->hasMany(Stock::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\DataAccess\Eloquent\User');
+        return $this->belongsTo(User::class);
     }
 
     public function restaurant()
     {
-        return $this->belongsTo('App\DataAccess\Eloquent\Restaurant');
+        return $this->belongsTo(Restaurant::class);
     }
 }

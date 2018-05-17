@@ -10,16 +10,16 @@ class Restaurant extends Model
 
     public function user()
     {
-        return $this->hasOne('App\DataAccess\Eloquent\User');
+        return $this->hasOne(User::class);
     }
 
     public function tableTypes()
     {
-        return $this->hasMany('App\DataAccess\Eloquent\TableType');
+        return $this->hasMany(TableType::class);
     }
 
     public function reservations()
     {
-        return $this->hasMany('App\DataAccess\Eloquent\Reservation');
+        return $this->hasMany(Reservation::class);
     }
 }

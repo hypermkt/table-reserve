@@ -10,11 +10,11 @@ class Stock extends Model
 
     public function tableType()
     {
-        return $this->belongsTo('App\DataAccess\Eloquent\TableType');
+        return $this->belongsTo(TableType::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\DataAccess\Eloquent\User');
+        return $this->belongsTo(User::class);
     }
 }
