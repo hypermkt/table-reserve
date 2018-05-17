@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\DataAccess\Eloquent\User;
-use App\DataAccess\Eloquent\Restaurant;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Socialite;
-use Auth;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+use App\Services\Auth\SocialLogin\CallbackService;
 
 class SocialLoginController extends Controller
 {
@@ -16,51 +14,11 @@ class SocialLoginController extends Controller
         return Socialite::with('Twitter')->redirect();
     }
 
-    public function handleProviderCallback()
+    public function handleProviderCallback(CallbackService $service)
     {
-        $twitterUser = Socialite::driver('Twitter')->user();
-
-        $user = $this->findOrCreateUser($twitterUser);
-        $restaurant = $this->findOrCreateRestaurant($user);
-        session(['restaurant_id' => $restaurant->id]);
-
-        Auth::login($user, true);
+        Auth::login($service->execute(), true);
 
         return redirect()->to('/');
-    }
-
-    protected function findOrCreateUser($twitterUser)
-    {
-        $authUser = User::where('twitter_id', $twitterUser->id)->first();
-
-        if ($authUser) {
-            return $authUser;
-        }
-
-        // https://github.com/SocialiteProviders/Twitter/blob/master/Provider.php#L20
-        return User::create([
-            'name' => $twitterUser->nickname,
-            'handle' => $twitterUser->name,
-            'twitter_id' => $twitterUser->id,
-            'avatar' => $twitterUser->avatar,
-        ]);
-    }
-
-    protected function findOrCreateRestaurant($user)
-    {
-        $restaurant = Restaurant::where('user_id', $user->id)->first();
-
-        if ($restaurant) {
-            return $restaurant;
-        }
-
-        // https://github.com/SocialiteProviders/Twitter/blob/master/Provider.php#L20
-        return Restaurant::create([
-            'user_id' => $user->id,
-            'title' => 'レストラン名',
-            'description' => '説明文',
-            'release_state' => 'private',
-        ]);
     }
 
     public function logout()
