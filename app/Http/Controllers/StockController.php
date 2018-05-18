@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\DataAccess\Eloquent\Stock;
-use Auth;
 use App\Services\Stock\ListService;
+use App\Services\Stock\CreateService;
 
 class StockController extends Controller
 {
@@ -33,26 +31,12 @@ class StockController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CreateService $service
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateService $service)
     {
-        Stock::where('accept_date', '>=', Carbon::parse($request->baseDate)->format('Y-m-01'))
-            ->where('accept_date', '<', Carbon::parse($request->baseDate)->addMonth(1)->format('Y-m-01'))->delete();
-
-        if (is_array($request->accept_dates) && is_array($request->acceptable_table_numbers)) {
-            foreach ($request->accept_dates as $key => $accept_date) {
-                $acceptable_table_number = $request->acceptable_table_numbers[$key] ?? null;
-                if (isset($accept_date) && isset($acceptable_table_number)) {
-                    $arr = explode(':', $key);
-                    Stock::updateOrCreate(
-                        ['user_id' => Auth::id(), 'table_type_id' => $arr[1], 'accept_date' => $accept_date],
-                        ['user_id' => Auth::id(), 'table_type_id' => $arr[1], 'accept_date' => $accept_date, 'acceptable_table_number' => $acceptable_table_number]
-                    );
-                }
-            }
-        }
+        $service->execute();
 
         return redirect()->to('/stocks')->with('success', '在庫設定を登録しました');
     }
