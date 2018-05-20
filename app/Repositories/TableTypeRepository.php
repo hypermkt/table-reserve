@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\DataAccess\Eloquent\TableType;
 
 
-class TableTypeRepository implements TableTypeInterface
+class TableTypeRepository implements TableTypeRepositoryInterface
 {
     public function store(array $data, $restaurantId, $userId)
     {
