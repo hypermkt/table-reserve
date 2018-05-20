@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TableTypeRequest;
-use Illuminate\Http\Request;
 use App\DataAccess\Eloquent\TableType;
 use Auth;
 use App\Repositories\TableTypeInterface;
