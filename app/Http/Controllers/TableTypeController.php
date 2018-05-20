@@ -87,16 +87,7 @@ class TableTypeController extends Controller
      */
     public function update(TableTypeRequest $request, $id)
     {
-        $tableType = TableType::find($id);
-        $tableType->release_state = $request->release_state;
-        $tableType->table_type_name = $request->table_type_name;
-        $tableType->available_start_time = $request->available_start_time;
-        $tableType->available_end_time = $request->available_end_time;
-        $tableType->minimum_capacity = $request->minimum_capacity;
-        $tableType->max_capacity = $request->max_capacity;
-        $tableType->number_of_sales = $request->number_of_sales;
-        $tableType->connectable = $request->connectable;
-        $tableType->save();
+        $this->tableTypeRepository->update($request, $id);
 
         return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->table_type_name . '」を更新しました' );
     }
