@@ -15,6 +15,7 @@ class TableTypeRepositoryTest extends TestCase
 
     private $user;
     private $restaurant;
+    private $repository;
 
     public function setUp()
     {
@@ -23,6 +24,7 @@ class TableTypeRepositoryTest extends TestCase
         $this->restaurant = factory(Restaurant::class)->create([
             'user_id' => $this->user->id
         ]);
+        $this->repository = new TableTypeRepository();
     }
 
     /**
@@ -40,8 +42,7 @@ class TableTypeRepositoryTest extends TestCase
             'number_of_sales' => 3,
             'connectable' => true,
         ];
-        $repository = new TableTypeRepository();
-        $repository->store($data, $this->restaurant->id, $this->user->id);
+        $this->repository->store($data, $this->restaurant->id, $this->user->id);
 
         $this->assertDatabaseHas('table_types', array_merge(
             [
@@ -71,8 +72,7 @@ class TableTypeRepositoryTest extends TestCase
             'number_of_sales' => 3,
             'connectable' => true,
         ];
-        $repository = new TableTypeRepository();
-        $repository->update($data, $tableType);
+        $this->repository->update($data, $tableType);
 
         $this->assertDatabaseHas('table_types', array_merge(
             [
