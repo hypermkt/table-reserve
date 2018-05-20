@@ -72,7 +72,7 @@ class TableTypeRepositoryTest extends TestCase
             'connectable' => true,
         ];
         $repository = new TableTypeRepository();
-        $repository->update($data, $tableType->id);
+        $repository->update($data, $tableType);
 
         $this->assertDatabaseHas('table_types', array_merge(
             [

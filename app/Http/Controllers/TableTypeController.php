@@ -84,9 +84,9 @@ class TableTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TableTypeRequest $request, $id)
+    public function update(TableTypeRequest $request, TableType $tableType)
     {
-        $this->tableTypeRepository->update($request->all(), $id);
+        $this->tableTypeRepository->update($request->all(), $tableType);
 
         return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->table_type_name . '」を更新しました' );
     }

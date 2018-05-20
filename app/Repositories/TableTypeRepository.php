@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\DataAccess\Eloquent\TableType;
 
+
 class TableTypeRepository implements TableTypeInterface
 {
     public function store(array $data, $restaurantId, $userId)
@@ -22,9 +23,8 @@ class TableTypeRepository implements TableTypeInterface
         ]);
     }
 
-    public function update(array $data, $tableTypeId)
+    public function update(array $data, TableType $tableType)
     {
-        $tableType = TableType::find($tableTypeId);
         $tableType->release_state = $data['release_state'];
         $tableType->table_type_name = $data['table_type_name'];
         $tableType->available_start_time = $data['available_start_time'];
