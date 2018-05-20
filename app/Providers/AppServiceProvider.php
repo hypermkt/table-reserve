@@ -27,5 +27,9 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\TableTypeInterface::class,
             \App\Repositories\TableTypeRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\CourseRepositoryInterface::class,
+            \App\Repositories\CourseRepository::class
+        );
     }
 }
