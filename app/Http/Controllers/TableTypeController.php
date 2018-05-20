@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TableTypeRequest;
 use App\DataAccess\Eloquent\TableType;
 use Auth;
-use App\Repositories\TableTypeInterface;
+use App\Repositories\TableTypeRepositoryInterface;
 
 class TableTypeController extends Controller
 {
     private $tableTypeRepository;
 
-    public function __construct(TableTypeInterface $tableTypeRepository)
+    public function __construct(TableTypeRepositoryInterface $tableTypeRepository)
     {
         $this->tableTypeRepository = $tableTypeRepository;
     }
