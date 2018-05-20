@@ -6,8 +6,6 @@ use App\Http\Requests\CourseRequest;
 use App\DataAccess\Eloquent\Course;
 use App\DataAccess\Eloquent\TableType;
 use App\Repositories\CourseRepositoryInterface;
-use Encore\Admin\Widgets\Table;
-use Illuminate\Http\Request;
 use Auth;
 
 class CourseController extends Controller
@@ -100,7 +98,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Course $course
+     * @param  Course $course
      * @return \Illuminate\Http\Response
      */
     public function destroy(Course $course)
