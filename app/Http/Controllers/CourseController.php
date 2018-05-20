@@ -87,7 +87,7 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  CourseRequest  $request
-     * @param  int  $id
+     * @param  Course $course
      * @return \Illuminate\Http\Response
      */
     public function update(CourseRequest $request, Course $course)
