@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CourseRequest;
 use App\DataAccess\Eloquent\Course;
 use App\DataAccess\Eloquent\TableType;
-use Encore\Admin\Widgets\Table;
-use Illuminate\Http\Request;
+use App\Repositories\CourseRepositoryInterface;
 use Auth;
 
 class CourseController extends Controller
 {
+    private $courseRepository;
+
+    public function __construct(CourseRepositoryInterface $courseRepository)
+    {
+        $this->courseRepository = $courseRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,16 +49,7 @@ class CourseController extends Controller
      */
     public function store(CourseRequest $request)
     {
-        $course = Course::create([
-            'user_id' => Auth::id(),
-            'release_state' => $request->release_state,
-            'kind' => $request->kind,
-            'course_name' => $request->course_name,
-            'price' => $request->price,
-            'duration_minutes' => $request->duration_minutes,
-        ]);
-
-        $course->tableTypes()->attach($request->table_types);
+        $this->courseRepository->store($request->all(), Auth::id());
 
         return redirect()->to('/courses')->with('success', 'メニュー「' . $request->course_name . '」を登録しました');
     }
@@ -88,20 +85,12 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  CourseRequest  $request
-     * @param  int  $id
+     * @param  Course $course
      * @return \Illuminate\Http\Response
      */
-    public function update(CourseRequest $request, $id)
+    public function update(CourseRequest $request, Course $course)
     {
-        $course = Course::find($id);
-        $course->release_state = $request->release_state;
-        $course->kind = $request->kind;
-        $course->course_name = $request->course_name;
-        $course->price = $request->price;
-        $course->duration_minutes = $request->duration_minutes;
-        $course->save();
-
-        $course->tableTypes()->sync($request->table_types);
+        $this->courseRepository->update($request->all(), $course);
 
         return redirect()->to('/courses')->with('success', 'メニュー「' . $request->course_name . '」を更新しました');
     }
@@ -109,7 +98,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Course $course
+     * @param  Course $course
      * @return \Illuminate\Http\Response
      */
     public function destroy(Course $course)

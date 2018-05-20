@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TableTypeRequest;
-use Illuminate\Http\Request;
 use App\DataAccess\Eloquent\TableType;
 use Auth;
+use App\Repositories\TableTypeInterface;
 
 class TableTypeController extends Controller
 {
+    private $tableTypeRepository;
+
+    public function __construct(TableTypeInterface $tableTypeRepository)
+    {
+        $this->tableTypeRepository = $tableTypeRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,18 +46,7 @@ class TableTypeController extends Controller
      */
     public function store(TableTypeRequest $request)
     {
-        TableType::create([
-            'restaurant_id' => session('restaurant_id'),
-            'user_id' => Auth::id(),
-            'release_state' => $request->release_state,
-            'table_type_name' => $request->table_type_name,
-            'available_start_time' => $request->available_start_time,
-            'available_end_time' => $request->available_end_time,
-            'minimum_capacity' => $request->minimum_capacity,
-            'max_capacity' => $request->max_capacity,
-            'number_of_sales' => $request->number_of_sales,
-            'connectable' => $request->connectable,
-        ]);
+        $this->tableTypeRepository->store($request->all(), session('restaurant_id'), Auth::id());
 
         return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->table_type_name . '」を登録しました' );
     }
@@ -85,21 +81,12 @@ class TableTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  TableTypeRequest $request
-     * @param  int  $id
+     * @param  TableType $tableType
      * @return \Illuminate\Http\Response
      */
-    public function update(TableTypeRequest $request, $id)
+    public function update(TableTypeRequest $request, TableType $tableType)
     {
-        $tableType = TableType::find($id);
-        $tableType->release_state = $request->release_state;
-        $tableType->table_type_name = $request->table_type_name;
-        $tableType->available_start_time = $request->available_start_time;
-        $tableType->available_end_time = $request->available_end_time;
-        $tableType->minimum_capacity = $request->minimum_capacity;
-        $tableType->max_capacity = $request->max_capacity;
-        $tableType->number_of_sales = $request->number_of_sales;
-        $tableType->connectable = $request->connectable;
-        $tableType->save();
+        $this->tableTypeRepository->update($request->all(), $tableType);
 
         return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->table_type_name . '」を更新しました' );
     }
