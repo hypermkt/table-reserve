@@ -46,7 +46,7 @@ class TableTypeController extends Controller
      */
     public function store(TableTypeRequest $request)
     {
-        $this->tableTypeRepository->store($request, session('restaurant_id'), Auth::id());
+        $this->tableTypeRepository->store($request->all(), session('restaurant_id'), Auth::id());
 
         return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->table_type_name . '」を登録しました' );
     }
@@ -86,7 +86,7 @@ class TableTypeController extends Controller
      */
     public function update(TableTypeRequest $request, $id)
     {
-        $this->tableTypeRepository->update($request, $id);
+        $this->tableTypeRepository->update($request->all(), $id);
 
         return redirect()->to('/table_types')->with('success', '席タイプ「' . $request->table_type_name . '」を更新しました' );
     }
