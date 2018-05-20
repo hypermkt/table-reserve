@@ -81,7 +81,7 @@ class TableTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  TableTypeRequest $request
-     * @param  int  $id
+     * @param  TableType $tableType
      * @return \Illuminate\Http\Response
      */
     public function update(TableTypeRequest $request, TableType $tableType)
