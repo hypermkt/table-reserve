@@ -35,5 +35,9 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\CourseRepositoryInterface::class,
             \App\Repositories\CourseRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\ReservationRepositoryInterface::class,
+            \App\Repositories\ReservationRepository::class
+        );
     }
 }

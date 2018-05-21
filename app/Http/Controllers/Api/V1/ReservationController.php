@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Repositories\ReservationRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use App\DataAccess\Eloquent\Customer;
-use App\DataAccess\Eloquent\Reservation;
-use Illuminate\Support\Facades\Log;
 
 class ReservationController extends Controller
 {
+    private $reservationRepository;
+
+    public function __construct(
+        ReservationRepositoryInterface $reservationRepository
+    )
+    {
+        $this->reservationRepository = $reservationRepository;
+    }
+
     public function store(Request $request)
     {
         $customer = $this->findOrCreate($request);
-        $reservation = Reservation::create([
-            'restaurant_id' => $request->restaurant_id,
-            'customer_id' => $customer->id,
-            'course_id' => $request->course_id,
-            'number_of_people' => $request->number_of_people,
-            'datetime' => $request->datetime,
-        ]);
 
         return response()->json([
             'customer' => $customer,
-            'reservation' => $reservation
+            'reservation' => $this->reservationRepository->store($request->all(), $customer)
         ], 201);
     }
 
